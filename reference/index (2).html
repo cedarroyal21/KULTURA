@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="fr" class="light">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>KULTURA — Écosystème Culturel & Créatif</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet"/>
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#943d1e",
+                        "primary-container": "#b35433",
+                        "primary-fixed": "#ffdbd0",
+                        "primary-fixed-dim": "#ffb59d",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#fff2ef",
+                        "on-primary-fixed": "#390c00",
+                        "on-primary-fixed-variant": "#7d2c0e",
+                        "secondary": "#4b41e1",
+                        "secondary-container": "#645efb",
+                        "secondary-fixed": "#e2dfff",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#fffbff",
+                        "on-secondary-fixed": "#0f0069",
+                        "tertiary": "#735c00",
+                        "tertiary-container": "#cca730",
+                        "tertiary-fixed": "#ffe088",
+                        "background": "#faf9f5",
+                        "surface": "#faf9f5",
+                        "surface-dim": "#dbdad6",
+                        "surface-bright": "#faf9f5",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f4f4f0",
+                        "surface-container": "#efeeea",
+                        "surface-container-high": "#e9e8e4",
+                        "surface-container-highest": "#e3e2df",
+                        "surface-variant": "#e3e2df",
+                        "on-surface": "#1b1c1a",
+                        "on-surface-variant": "#56423c",
+                        "outline": "#89726b",
+                        "outline-variant": "#dcc1b8",
+                        "inverse-surface": "#2f312e",
+                        "inverse-on-surface": "#f2f1ed"
+                    },
+                    spacing: {
+                        "xs": "8px",
+                        "sm": "16px",
+                        "md": "24px",
+                        "lg": "40px",
+                        "xl": "64px",
+                        "gutter": "20px",
+                        "container-max": "1280px"
+                    },
+                    fontFamily: {
+                        "display-lg": ["Playfair Display", "serif"],
+                        "headline-md": ["Playfair Display", "serif"],
+                        "headline-sm": ["Playfair Display", "serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "label-caps": ["Inter", "sans-serif"]
+                    },
+                    fontSize: {
+                        'display-lg': ['2.25rem', { lineHeight: '2.5rem' }],
+                        'headline-md': ['1.5rem', { lineHeight: '2rem' }],
+                        'headline-sm': ['1.25rem', { lineHeight: '1.75rem' }],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @media (max-width: 768px) {
+            h1, h2 { font-size: 1.75rem !important; line-height: 2.25rem !important; }
+            h3 { font-size: 1.25rem !important; line-height: 1.75rem !important; }
+            .text-display-lg { font-size: 1.85rem !important; line-height: 2.25rem !important; }
+            .text-headline-md { font-size: 1.35rem !important; line-height: 1.75rem !important; }
+        }
+    </style>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .card-shadow { box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+        .deep-shadow { box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .digital-card-bg { background: linear-gradient(135deg, #943d1e 0%, #7d2c0e 100%); }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex overflow-x-hidden w-full">
+
+    <!-- UNIFIED DESKTOP SIDEBAR NAV (Stitch Template SideNavBar Standard) -->
+    <aside id="desktop-sidebar-nav" class="hidden lg:flex flex-col py-md px-sm h-screen w-64 fixed left-0 top-0 overflow-y-auto bg-surface-container shadow-sm z-50 border-r border-outline-variant/30 shrink-0">
+        <!-- Header & Profile -->
+        <div class="mb-lg px-sm flex flex-col items-start gap-xs">
+            <h1 onclick="navigateTo('landing')" class="text-headline-md font-display-lg text-primary tracking-wider font-bold cursor-pointer">KULTURA</h1>
+            <div onclick="navigateTo('carte_membre')" class="flex items-center gap-xs mt-xs cursor-pointer">
+                <img alt="User avatar" class="w-8 h-8 rounded-full object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTTQD2HRU0K0pZrjDRhQQdKLkNcYFKVa0DxHcRWpi0rYmXXdD1OLoZL352Ayjnnh-NB2W659bPnwq9_OFgf4Dg49XK7SbeauFQG0Nv8ytFdYy07UfZ8z0dcyftkrdXj9z-qpaVfySti3bTwFVUwhpRB8B7vMi2hEXX7pkGrxsxuw46TdRo_NYdoh8_0Yxm2ZGOzsf1yhuKzH7mGVdCyLlVSuOR5ZUll7_8r1J9GsemrhTgrng5oFlV"/>
+                <p class="text-label-caps font-label-caps text-on-surface-variant">Level 4 — Explorer</p>
+            </div>
+            <button onclick="navigateTo('carte_membre')" class="mt-sm w-full bg-primary text-on-primary font-label-caps text-label-caps py-2 rounded-lg hover:bg-primary-container transition-colors shadow-sm font-semibold">Upgrade Pass</button>
+        </div>
+
+        <!-- Navigation Tabs (Stitch Exact Icons & Names) -->
+        <nav class="flex-1 flex flex-col gap-1">
+            <button onclick="navigateTo('home')" class="nav-item flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-colors text-left" data-page="home">
+                <span class="material-symbols-outlined">home</span>
+                <span class="text-body-md">Home</span>
+            </button>
+            <button onclick="navigateTo('explore')" class="nav-item flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-colors text-left" data-page="explore">
+                <span class="material-symbols-outlined">explore</span>
+                <span class="text-body-md">Explore</span>
+            </button>
+            <button onclick="navigateTo('mediatheque')" class="nav-item flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-colors text-left" data-page="mediatheque">
+                <span class="material-symbols-outlined">library_books</span>
+                <span class="text-body-md">Médiathèque</span>
+            </button>
+            <button onclick="navigateTo('apprendre')" class="nav-item flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-colors text-left" data-page="apprendre">
+                <span class="material-symbols-outlined">school</span>
+                <span class="text-body-md">Apprendre</span>
+            </button>
+            <button onclick="navigateTo('community')" class="nav-item flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-colors text-left" data-page="community">
+                <span class="material-symbols-outlined">group</span>
+                <span class="text-body-md">Community</span>
+            </button>
+            <button onclick="navigateTo('events')" class="nav-item flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-colors text-left" data-page="events">
+                <span class="material-symbols-outlined">calendar_today</span>
+                <span class="text-body-md">Events</span>
+            </button>
+            <button onclick="navigateTo('agri')" class="nav-item flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-colors text-left" data-page="agri">
+                <span class="material-symbols-outlined">agriculture</span>
+                <span class="text-body-md">Agri</span>
+            </button>
+            <button onclick="navigateTo('services')" class="nav-item flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-colors text-left" data-page="services">
+                <span class="material-symbols-outlined">faucet</span>
+                <span class="text-body-md">Services</span>
+            </button>
+            <button onclick="navigateTo('relais')" class="nav-item flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-colors text-left" data-page="relais">
+                <span class="material-symbols-outlined">location_on</span>
+                <span class="text-body-md">Relais KULTURA</span>
+            </button>
+        </nav>
+
+        <!-- Footer Actions -->
+        <div class="mt-auto pt-md border-t border-outline-variant flex flex-col gap-2">
+            <button onclick="openSearchModal()" class="flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-colors text-left">
+                <span class="material-symbols-outlined">search</span>
+                <span class="text-body-md">Search</span>
+            </button>
+            <button onclick="openNotificationCenter()" class="flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-colors text-left">
+                <span class="material-symbols-outlined">notifications</span>
+                <span class="text-body-md">Notifications</span>
+            </button>
+            <button onclick="navigateTo('carte_membre')" class="flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-colors text-left">
+                <span class="material-symbols-outlined">person</span>
+                <span class="text-body-md font-body-md">Profile</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- MOBILE HEADER -->
+    <header class="flex lg:hidden justify-between items-center px-gutter py-xs w-full fixed top-0 z-50 bg-surface/90 backdrop-blur-md shadow-sm">
+        <div onclick="navigateTo('home')" class="text-headline-sm font-display-lg text-primary font-bold cursor-pointer">
+            KULTURA
+        </div>
+        <div class="flex items-center gap-3 text-primary">
+            <span onclick="openSearchModal()" class="material-symbols-outlined cursor-pointer">search</span>
+            <span onclick="openNotificationCenter()" class="material-symbols-outlined cursor-pointer">notifications</span>
+            <span onclick="navigateTo('carte_membre')" class="material-symbols-outlined cursor-pointer">badge</span>
+        </div>
+    </header>
+
+    <!-- MAIN VIEW CONTAINER -->
+    <main id="app-container" class="pt-[60px] pb-[96px] lg:pt-0 lg:pb-0 lg:ml-64 w-full min-w-0 min-h-screen overflow-x-hidden flex-1">
+
+        <!-- 1. LANDING PAGE VIEW (EXACT Stitch landing_page_desktop.html Source of Truth) -->
+        <div id="view-landing" class="page-view hidden">
+            <div class="max-w-container-max mx-auto px-gutter lg:px-lg py-md">
+                <section class="relative min-h-[80vh] flex items-center justify-center px-gutter py-xl mb-xl rounded-xl overflow-hidden shadow-lg mt-md">
+                    <div class="absolute inset-0 z-0">
+                        <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7iIYJxtn1mD45-Krl5YPPkAxgdlzfeD_mLXUHf6DbW-ahcK8jLCIub2gR4xLR0pD1xmThul6hG2s294V6QffvC0EZtIxX4HitEZAUNNPfac6I1Qg7M5loOdbNKtUg5ZJLk_DfhAtZjl7_E8haqnWyzorcDf24qti7lxshLXZoi72frq_JV7KkKOLwWSP-kR1_BhOLs5fqEuy_0nKBx67Wik6M9n4dxAjxWBwZFqLo5ezEMX7EoCf7" alt="Hero background"/>
+                        <div class="absolute inset-0 bg-gradient-to-r from-surface/90 to-surface/40 mix-blend-multiply"></div>
+                    </div>
+                    <div class="relative z-10 max-w-3xl text-center flex flex-col items-center">
+                        <img alt="Kultura Logo" class="h-32 w-auto mb-md drop-shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1Mx7aKbitcej2II0jniDN_m2OuFRB4SuxrRnlHFQgr4ywCSYeIElXBSX2YKN--q9CmIiaue1_DzdYVwUFZvu0mvWit94b3m_VSjwC5wfe5jCgH_gGGpPuJD_6JCWmPwfR4mceEEcy2jX8toHh2aNy_TPnb9rIXG85txiA_VmBlJ4Yvt_MYxosjuy_Sb_fkOjZdunrrRANUWp-B6_JgzZ35G0EJreOakyXiGpkJ-JPGjPZhXk2QGP2"/>
+                        <h1 class="text-display-lg-mobile md:text-display-lg font-display-lg text-primary mb-xs drop-shadow-sm font-bold">KULTURA</h1>
+                        <p class="text-body-lg font-body-lg text-on-surface-variant mb-lg max-w-2xl font-medium">Divertir. Découvrir. Apprendre. Créer. Évoluer.</p>
+                        <div class="flex flex-col sm:flex-row gap-sm">
+                            <button onclick="navigateTo('explore')" class="bg-primary text-on-primary text-body-md font-bold px-lg py-sm rounded-full shadow-md hover:bg-primary-container transition-colors">Explorer KULTURA</button>
+                            <button onclick="navigateTo('carte_membre')" class="bg-surface text-primary border border-primary text-body-md font-bold px-lg py-sm rounded-full hover:bg-surface-container-low transition-colors">Devenir membre</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb-xl">
+                    <h2 class="text-headline-md font-headline-md text-on-surface mb-md font-bold">Votre univers</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+                        <div onclick="navigateTo('mediatheque')" class="relative h-64 md:h-auto md:row-span-2 rounded-xl overflow-hidden group shadow-sm hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                            <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPhSZ3tEfvTVRrcXubdzoGL-hGH7-lNgzKQoNd-1k2pp5zWA9OynKYlD0T_qsLqKv-QzWrwAheuL1gy43Ip3K_tDCjVwKfu1vpfoyJ4B16MnrpHHAxOonPrkoowNGlcmKrP890qFthZf1xxx2WItmsdC6HxK3UCWRBvkC7JXGIxvB7Oha8gs4HvKWBB9xtSv8aeXmN_fZOnzgvNikfu8pFdfodcMzRAAFJawwmB-CgppQf37Eykdyo" alt="Culture & Médiathèque"/>
+                            <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 p-md w-full">
+                                <span class="inline-block bg-secondary-fixed/90 text-on-secondary-fixed text-label-caps font-label-caps px-2 py-1 rounded-full mb-xs backdrop-blur-sm">Découverte</span>
+                                <h3 class="text-headline-sm font-headline-sm text-on-primary font-bold">Culture & Médiathèque</h3>
+                            </div>
+                        </div>
+                        <div onclick="navigateTo('events')" class="relative h-48 rounded-xl overflow-hidden group shadow-sm hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                            <div class="absolute inset-0 bg-tertiary-container/20"></div>
+                            <img class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-50 transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-HyuChNdIUQGhQvHAKoPmmkEcTWUMmecpo2DrwBFCogu4_uB2v3mYLmIjTy0ti4zYtKMEzettMvpGqN6z5bTyTXHVOCs4QalI0EgtnZDbEn1QFbBb0-C-V9USUPnI1nDWY7JcUYZC_dwLfnmIp10OO1mIOkLFnxWIiz5dwXlds4xY0jaz7r6vlWXXjPtL_Juj8tu8qkMkwlDb4z0zTzaLsIx_Ktjrp1h_ZP7fbJ8t2vkS7NxVGKxM" alt="Divertissement"/>
+                            <div class="absolute inset-0 p-md flex flex-col justify-end bg-gradient-to-t from-surface/90 to-transparent">
+                                <h3 class="text-headline-sm font-headline-sm text-primary font-bold">Divertissement</h3>
+                            </div>
+                        </div>
+                        <div onclick="navigateTo('apprendre')" class="relative h-48 rounded-xl overflow-hidden group shadow-sm hover:shadow-lg transition-shadow duration-300 bg-surface-container-high cursor-pointer">
+                            <div class="absolute inset-0 p-md flex flex-col justify-end">
+                                <span class="material-symbols-outlined text-4xl text-secondary mb-2">school</span>
+                                <h3 class="text-headline-sm font-headline-sm text-on-surface font-bold">Apprendre</h3>
+                                <p class="text-body-md text-on-surface-variant text-sm mt-1">Cuisines, langues, artisanat.</p>
+                            </div>
+                        </div>
+                        <div onclick="navigateTo('community')" class="relative h-48 md:col-span-2 rounded-xl overflow-hidden group shadow-sm hover:shadow-lg transition-shadow duration-300 bg-primary-fixed-dim cursor-pointer">
+                            <div class="absolute inset-0 flex items-center p-md">
+                                <div class="w-2/3">
+                                    <h3 class="text-headline-md font-headline-md text-on-primary-fixed mb-2 font-bold">Créer & Évoluer</h3>
+                                    <p class="text-body-md text-on-primary-fixed-variant">Rejoignez une communauté vibrante d'innovateurs.</p>
+                                </div>
+                                <div class="w-1/3 flex justify-end">
+                                    <span class="material-symbols-outlined text-6xl text-on-primary-fixed opacity-50">brush</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- 2. HOME DASHBOARD HUB VIEW (Exact Stitch member_dashboard_desktop Template) -->
+        <div id="view-home" class="page-view">
+            <div class="w-full max-w-full overflow-x-hidden px-4 lg:px-lg py-md">
+                <header class="mb-6 mt-md">
+                    <h2 class="text-2xl sm:text-3xl font-display-lg text-on-surface mb-xs font-bold">Bonjour, Justine</h2>
+                    <p class="text-sm sm:text-body-lg font-body-lg text-on-surface-variant">Content de vous retrouver sur KULTURA.</p>
+                </header>
+
+                <div class="flex flex-col lg:grid lg:grid-cols-12 gap-4 lg:gap-lg">
+                    <!-- Left Column: Ma progression (3 cols) -->
+                    <section class="w-full lg:col-span-3 flex flex-col gap-4">
+                        <h3 class="text-headline-sm font-headline-sm text-on-surface border-b border-surface-variant pb-xs font-bold">Ma progression</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-md">
+                            <!-- Course Progress Card -->
+                            <div class="bg-surface-container-lowest rounded-xl p-sm card-shadow flex flex-col justify-between">
+                                <div class="flex items-start justify-between mb-sm">
+                                    <div class="w-10 h-10 rounded-lg bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+                                        <span class="material-symbols-outlined">school</span>
+                                    </div>
+                                    <span class="text-label-caps font-label-caps text-secondary px-2 py-1 bg-secondary-fixed/50 rounded-full">Course</span>
+                                </div>
+                                <h4 class="text-body-md font-body-md font-semibold text-on-surface mb-1">Histoire des Bamileke</h4>
+                                <p class="text-label-caps font-label-caps text-on-surface-variant mb-md">Module 3 : Les Chefferies</p>
+                                <div class="w-full bg-surface-variant rounded-full h-2 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-primary to-secondary h-full rounded-full" style="width: 65%"></div>
+                                </div>
+                                <div class="flex justify-between mt-2">
+                                    <span class="text-label-caps font-label-caps text-on-surface-variant">65%</span>
+                                    <span onclick="navigateTo('apprendre')" class="text-label-caps font-label-caps text-primary cursor-pointer hover:underline font-bold">Continuer</span>
+                                </div>
+                            </div>
+                            <!-- Book Progress Card -->
+                            <div class="bg-surface-container-lowest rounded-xl p-sm card-shadow flex flex-col justify-between">
+                                <div class="flex items-start justify-between mb-sm">
+                                    <div class="w-10 h-10 rounded-lg bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+                                        <span class="material-symbols-outlined">menu_book</span>
+                                    </div>
+                                </div>
+                                <h4 class="text-body-md font-body-md font-semibold text-on-surface mb-1">Contes de la Forêt</h4>
+                                <p class="text-label-caps font-label-caps text-on-surface-variant mb-md">Chapitre 4</p>
+                                <div class="w-full bg-surface-variant rounded-full h-2 overflow-hidden">
+                                    <div class="bg-primary h-full rounded-full" style="width: 40%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Center Column: Recommandé pour vous (6 cols) -->
+                    <section class="w-full lg:col-span-6 flex flex-col gap-4">
+                        <h3 class="text-headline-sm font-headline-sm text-on-surface border-b border-surface-variant pb-xs font-bold">Recommandé pour vous</h3>
+                        <!-- Large Editorial Card -->
+                        <div onclick="navigateTo('events')" class="group relative h-[280px] sm:h-[360px] rounded-xl overflow-hidden card-shadow cursor-pointer">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDbOGJ1RMC6LffgYDHm0ImM7lZU3R9Iunftumd7MZKJGN02yIQ9hueMMFlQ8lYqDezc0BgXsNJYkLFoaRoYSJ5cQZ__jZuubueareYA33AhjHBmInFjpTUQL3p0fbT1A7OxVb4UDM_D5dIgfgUudLoJyFArRmz_uQZCc0VlpDFDJojQqF1pwlP4PRtdP0iOjlMiwoJMYncw4mIgdfqx7sQTyxCgJUym8jdHW9SaklLgp1ByhgT3B_Go')"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/90 via-inverse-surface/40 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 p-md sm:p-lg w-full">
+                                <div class="flex gap-2 mb-sm">
+                                    <span class="px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-caps text-label-caps">Exposition</span>
+                                    <span class="px-3 py-1 rounded-full bg-surface/20 text-on-primary font-label-caps text-label-caps">Douala</span>
+                                </div>
+                                <h4 class="text-headline-md font-headline-md text-surface-container-lowest mb-2 leading-tight font-bold">L'Héritage Sawa : Nouveaux Regards</h4>
+                                <p class="text-body-md font-body-md text-surface-variant line-clamp-2">Une exploration contemporaine des traditions maritimes et de l'artisanat végétal.</p>
+                            </div>
+                        </div>
+
+                        <!-- Two smaller cards side-by-side -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+                            <div onclick="navigateTo('agri')" class="bg-surface-container-lowest rounded-xl overflow-hidden card-shadow flex flex-col cursor-pointer">
+                                <div class="h-32 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCrIe_bo_RWC3OzChXLUFLCELdZ76JAilj2TX10wqwFWlP1NVRPM-UV5JfW6gc5eJKr-uePKM1Ohzp01J4LYvLJOryOLpWLeux71XOV_TcvjFIv-oTcud3xyeZF0dWMO3MV6YTf6i42PoUeQtQkB_6AUnVkCJH3-_Njdwacjp3hRM2m4ELeTzSiOcTpqDEmR0w7GbpzVz5F6PrCXWFPq5pi0iplurVUlFRGj_DFexZcFRvJrIDr1qsp')"></div>
+                                <div class="p-sm flex-1 flex flex-col justify-between">
+                                    <div>
+                                        <span class="text-label-caps font-label-caps text-tertiary mb-1 block">MicroFarm</span>
+                                        <h5 class="text-body-md font-body-md font-semibold text-on-surface leading-tight">Initiation à l'agriculture urbaine</h5>
+                                    </div>
+                                    <button class="mt-sm text-left text-primary font-label-caps text-label-caps font-bold hover:underline">Découvrir</button>
+                                </div>
+                            </div>
+                            <div onclick="navigateTo('mediatheque')" class="bg-surface-container-lowest rounded-xl overflow-hidden card-shadow flex flex-col cursor-pointer">
+                                <div class="h-32 bg-primary-fixed-dim flex items-center justify-center text-primary-container">
+                                    <span class="material-symbols-outlined text-5xl">play_circle</span>
+                                </div>
+                                <div class="p-sm flex-1 flex flex-col justify-between">
+                                    <div>
+                                        <span class="text-label-caps font-label-caps text-secondary mb-1 block">Podcast</span>
+                                        <h5 class="text-body-md font-body-md font-semibold text-on-surface leading-tight">Voix de la Diaspora : Épisode 12</h5>
+                                    </div>
+                                    <button class="mt-sm text-left text-primary font-label-caps text-label-caps font-bold hover:underline">Écouter</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Right Column: Pass & Events (3 cols) -->
+                    <section class="w-full lg:col-span-3 flex flex-col gap-4">
+                        <!-- Status Badges & Pass -->
+                        <div onclick="navigateTo('carte_membre')" class="bg-primary-container text-on-primary-container rounded-xl p-md card-shadow relative overflow-hidden cursor-pointer">
+                            <div class="absolute -right-10 -top-10 w-32 h-32 bg-primary-fixed/20 rounded-full blur-2xl"></div>
+                            <div class="flex items-center justify-between mb-sm relative z-10">
+                                <h3 class="text-body-md font-body-md font-bold">KULTURA Pass</h3>
+                                <span class="material-symbols-outlined">workspace_premium</span>
+                            </div>
+                            <p class="text-headline-md font-headline-md leading-none mb-xs relative z-10 font-bold">Actif</p>
+                            <p class="text-label-caps font-label-caps opacity-80 mb-md relative z-10">Renouvellement : 12 Nov</p>
+                            <div class="flex flex-wrap gap-2 relative z-10">
+                                <div class="bg-surface-container-lowest text-on-surface text-label-caps font-label-caps px-2.5 py-1 rounded-md flex items-center gap-1.5 shadow-sm">
+                                    <span class="material-symbols-outlined text-sm text-primary">book</span> Reader
+                                </div>
+                                <div class="bg-surface-container-lowest text-on-surface text-label-caps font-label-caps px-2.5 py-1 rounded-md flex items-center gap-1.5 shadow-sm">
+                                    <span class="material-symbols-outlined text-sm text-secondary">palette</span> Creator
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Événements à venir -->
+                        <div class="bg-surface-container-lowest rounded-xl p-sm card-shadow">
+                            <h3 class="text-label-caps font-label-caps text-on-surface-variant uppercase mb-sm font-bold">Événements à venir</h3>
+                            <ul class="flex flex-col gap-sm">
+                                <li onclick="navigateTo('events')" class="flex items-start gap-sm cursor-pointer hover:bg-surface-container p-1 rounded transition-colors">
+                                    <div class="w-12 h-12 rounded bg-surface-variant flex flex-col items-center justify-center shrink-0">
+                                        <span class="text-label-caps font-label-caps text-primary font-bold">OCT</span>
+                                        <span class="text-body-md font-body-md font-bold text-on-surface leading-none">24</span>
+                                    </div>
+                                    <div class="min-w-0 flex-1">
+                                        <h5 class="text-body-md font-body-md font-semibold text-on-surface truncate">Atelier Gastronomie Sawa</h5>
+                                        <p class="text-label-caps font-label-caps text-on-surface-variant flex items-center gap-1 truncate"><span class="material-symbols-outlined text-[14px]">location_on</span> Douala, Makepe</p>
+                                    </div>
+                                </li>
+                                <li onclick="navigateTo('events')" class="flex items-start gap-sm cursor-pointer hover:bg-surface-container p-1 rounded transition-colors">
+                                    <div class="w-12 h-12 rounded bg-surface-variant flex flex-col items-center justify-center shrink-0">
+                                        <span class="text-label-caps font-label-caps text-primary font-bold">NOV</span>
+                                        <span class="text-body-md font-body-md font-bold text-on-surface leading-none">02</span>
+                                    </div>
+                                    <div class="min-w-0 flex-1">
+                                        <h5 class="text-body-md font-body-md font-semibold text-on-surface truncate">Vernissage Art Contemporain</h5>
+                                        <p class="text-label-caps font-label-caps text-on-surface-variant flex items-center gap-1 truncate"><span class="material-symbols-outlined text-[14px]">location_on</span> Yaoundé, Musée Nat.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Community Snippet -->
+                        <div onclick="navigateTo('community')" class="bg-surface-container-lowest rounded-xl p-sm card-shadow cursor-pointer">
+                            <div class="flex items-center justify-between mb-sm">
+                                <h3 class="text-label-caps font-label-caps text-on-surface-variant uppercase font-bold">KULTURA Community</h3>
+                                <span class="material-symbols-outlined text-on-surface-variant text-sm">arrow_forward</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <img alt="Community member" class="w-8 h-8 rounded-full object-cover shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp956HpWVqoKVEWD1YFnkNs4iYPzjoQ-2PhaPXpRbkjpXEx-jRxiidTq1qKhxPwYV3wIVjb_bvbqUZ8BcGOVWwp4qWhw9hIpAlChior-_nJ39eWrG3-qsN4tz72aTLrBxgPsHzQhgtXGX2rGYJeZUaGvf7A7ZqQilEzTbtX9SoD13xaIibBOvOWH_Ridv8h5eOqGdaKzJXywe7heJ0C5BXStqeWVuYVPWXzRuUV3QtQF_jjn8QQ0yG"/>
+                                <div class="min-w-0 flex-1">
+                                    <p class="text-label-caps font-label-caps font-bold text-on-surface">Marc E.</p>
+                                    <p class="text-body-md font-body-md text-on-surface-variant text-sm line-clamp-2">Je viens de terminer le cours sur les chefferies, fascinant ! Quelqu'un aurait un bon livre à recommander ?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. EXPLORE VIEW -->
+        <div id="view-explore" class="page-view hidden">
+            <div class="max-w-container-max mx-auto px-gutter lg:px-lg py-md">
+                <header class="mb-md">
+                    <h1 class="text-2xl lg:text-3xl font-display-lg text-on-surface mb-1 font-bold">Explorer l'Écosystème</h1>
+                    <p class="text-sm text-on-surface-variant">Accédez à l'ensemble des univers et des expériences KULTURA.</p>
+                </header>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-sm md:gap-md">
+                    <div onclick="navigateTo('mediatheque')" class="bg-surface-container-lowest p-md rounded-xl border border-surface-variant flex flex-col items-start cursor-pointer hover:border-primary transition-all">
+                        <span class="material-symbols-outlined text-3xl text-primary mb-2">library_books</span>
+                        <h3 class="font-bold text-on-surface">Médiathèque</h3>
+                        <p class="text-xs text-on-surface-variant mt-1">Livres, audio, vidéos & archives</p>
+                    </div>
+                    <div onclick="navigateTo('apprendre')" class="bg-surface-container-lowest p-md rounded-xl border border-surface-variant flex flex-col items-start cursor-pointer hover:border-primary transition-all">
+                        <span class="material-symbols-outlined text-3xl text-secondary mb-2">school</span>
+                        <h3 class="font-bold text-on-surface">Apprendre</h3>
+                        <p class="text-xs text-on-surface-variant mt-1">Formations & modules certifiants</p>
+                    </div>
+                    <div onclick="navigateTo('community')" class="bg-surface-container-lowest p-md rounded-xl border border-surface-variant flex flex-col items-start cursor-pointer hover:border-primary transition-all">
+                        <span class="material-symbols-outlined text-3xl text-tertiary mb-2">group</span>
+                        <h3 class="font-bold text-on-surface">Communauté</h3>
+                        <p class="text-xs text-on-surface-variant mt-1">Discussions, clubs & challenges</p>
+                    </div>
+                    <div onclick="navigateTo('events')" class="bg-surface-container-lowest p-md rounded-xl border border-surface-variant flex flex-col items-start cursor-pointer hover:border-primary transition-all">
+                        <span class="material-symbols-outlined text-3xl text-primary mb-2">event</span>
+                        <h3 class="font-bold text-on-surface">Événements</h3>
+                        <p class="text-xs text-on-surface-variant mt-1">Concerts, ateliers & conférences</p>
+                    </div>
+                    <div onclick="navigateTo('agri')" class="bg-surface-container-lowest p-md rounded-xl border border-surface-variant flex flex-col items-start cursor-pointer hover:border-primary transition-all">
+                        <span class="material-symbols-outlined text-3xl text-green-700 mb-2">agriculture</span>
+                        <h3 class="font-bold text-on-surface">MicroFarm Agri</h3>
+                        <p class="text-xs text-on-surface-variant mt-1">Boxes agricoles & innovation</p>
+                    </div>
+                    <div onclick="navigateTo('services')" class="bg-surface-container-lowest p-md rounded-xl border border-surface-variant flex flex-col items-start cursor-pointer hover:border-primary transition-all">
+                        <span class="material-symbols-outlined text-3xl text-secondary mb-2">faucet</span>
+                        <h3 class="font-bold text-on-surface">Services Créatifs</h3>
+                        <p class="text-xs text-on-surface-variant mt-1">Design, rédaction & support</p>
+                    </div>
+                    <div onclick="navigateTo('relais')" class="bg-surface-container-lowest p-md rounded-xl border border-surface-variant flex flex-col items-start cursor-pointer hover:border-primary transition-all">
+                        <span class="material-symbols-outlined text-3xl text-primary mb-2">location_on</span>
+                        <h3 class="font-bold text-on-surface">Relais KULTURA</h3>
+                        <p class="text-xs text-on-surface-variant mt-1">Espaces physiques partenaires</p>
+                    </div>
+                    <div onclick="navigateTo('carte_membre')" class="bg-surface-container-lowest p-md rounded-xl border border-surface-variant flex flex-col items-start cursor-pointer hover:border-primary transition-all">
+                        <span class="material-symbols-outlined text-3xl text-tertiary mb-2">badge</span>
+                        <h3 class="font-bold text-on-surface">Carte & Avantages</h3>
+                        <p class="text-xs text-on-surface-variant mt-1">Réductions & Pass Membre</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. MÉDIATHÈQUE VIEW (Exact Stitch m_diath_que_desktop Template) -->
+        <div id="view-mediatheque" class="page-view hidden">
+            <div class="max-w-container-max mx-auto px-gutter lg:px-lg py-md">
+                <header class="mb-lg flex flex-col md:flex-row md:items-end justify-between gap-md">
+                    <div>
+                        <h2 class="text-display-lg font-display-lg text-on-background mb-xs font-bold">Médiathèque</h2>
+                        <p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl">Explorez des siècles d'héritage camerounais à travers notre collection numérisée de manuscrits, de traditions orales et d'art contemporain.</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-sm">
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+                            <input class="bg-surface-container-lowest border border-surface-variant rounded-full py-2 pl-10 pr-4 text-body-md font-body-md focus:border-secondary outline-none w-full md:w-64" placeholder="Rechercher..." type="text"/>
+                        </div>
+                        <button class="flex items-center gap-xs px-4 py-2 bg-surface-container rounded-full text-on-surface font-body-md hover:bg-surface-container-high transition-colors">
+                            <span class="material-symbols-outlined text-[20px]">filter_list</span>
+                            Filtres
+                        </button>
+                    </div>
+                </header>
+
+                <section class="mb-xl">
+                    <div class="flex items-center justify-between mb-md">
+                        <h3 class="text-headline-sm font-headline-sm text-on-background font-bold">Continuer la lecture</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-md">
+                        <!-- Featured Progress Card -->
+                        <div onclick="openContentDetail('Les Récits de la Forêt Équatoriale', 'Une compilation des contes traditionnels transcrits lors des expéditions de 1920, offrant un regard unique sur la cosmogonie du Centre.', 'https://lh3.googleusercontent.com/aida-public/AB6AXuDgxxDlVZPnFcTuLu7viLr4ZEY8Ve8sFovbStkO4mRK0qDK-o7l2kfB-k93KAIWciG8azZrU_oNwf93_XfBn3MJIKvtMbwymMpi0erbhZBoBdbzEpW3e0reacf76AVDSr_O9DTLr3xanwhUgdW9K5Xf8_Z8F1hDdJOetC7cMQ4VJnt0EtDuDR3zylWoTVvAjdN5jg5sCbhSJEGsq8Kg8T5DORWjCpnt-Xi7es1mU8gjkqQyMbP1NN7g')" class="md:col-span-8 bg-surface-container-lowest rounded-xl card-shadow overflow-hidden flex flex-col sm:flex-row group cursor-pointer relative">
+                            <div class="w-full sm:w-2/5 h-48 sm:h-auto relative">
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgxxDlVZPnFcTuLu7viLr4ZEY8Ve8sFovbStkO4mRK0qDK-o7l2kfB-k93KAIWciG8azZrU_oNwf93_XfBn3MJIKvtMbwymMpi0erbhZBoBdbzEpW3e0reacf76AVDSr_O9DTLr3xanwhUgdW9K5Xf8_Z8F1hDdJOetC7cMQ4VJnt0EtDuDR3zylWoTVvAjdN5jg5sCbhSJEGsq8Kg8T5DORWjCpnt-Xi7es1mU8gjkqQyMbP1NN7g" alt="Book"/>
+                            </div>
+                            <div class="p-md flex flex-col justify-center flex-1 relative z-10 bg-surface-container-lowest">
+                                <div class="flex items-center gap-xs mb-sm">
+                                    <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-label-caps font-label-caps font-semibold">Histoire</span>
+                                    <span class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full text-label-caps font-label-caps font-semibold">Ewondo</span>
+                                </div>
+                                <h4 class="text-headline-sm font-headline-sm text-on-background mb-xs font-bold">Les Récits de la Forêt Équatoriale</h4>
+                                <p class="text-body-md font-body-md text-on-surface-variant mb-md line-clamp-2">Une compilation des contes traditionnels transcrits lors des expéditions de 1920.</p>
+                                <div class="mt-auto">
+                                    <div class="flex justify-between text-label-caps font-label-caps text-on-surface-variant mb-xs">
+                                        <span>Chapitre 4 / 12</span>
+                                        <span>34% complété</span>
+                                    </div>
+                                    <div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+                                        <div class="h-full bg-gradient-to-r from-primary to-secondary rounded-full" style="width: 34%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Side Stack -->
+                        <div class="md:col-span-4 flex flex-col gap-md">
+                            <div onclick="openContentDetail('Le Tissage Ndop: Voix des Artisans', 'Documentaire Audio exceptionnel retraçant le savoir-faire textile Bamileke.', 'https://lh3.googleusercontent.com/aida-public/AB6AXuB40Crb0RwGU0qdzm0I7ZXpXpTzg4Kw_HqXRAHS2F6k1cFxx93P516mzDU_Ep5ijK73rD8TujycnNARBzhd5c8Iay12bXg8C9RRXwLrw1a4lE5wsQwzONvQVQ0quJfsHX84aT283dhQCZF1loR7pg53SMS_XieNAiHAPput8_F6cEOjKJsDIaaS1uIn5tqGewafTe_XAbSIAPTLZfNz-s6c_ZC96cr7JU9VTtKYW3gIUouS6OZWY4IZ')" class="bg-surface-container-lowest p-sm rounded-xl card-shadow flex gap-sm items-center cursor-pointer hover:bg-surface-container transition-colors group">
+                                <div class="w-16 h-16 rounded-lg overflow-hidden shrink-0 relative">
+                                    <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB40Crb0RwGU0qdzm0I7ZXpXpTzg4Kw_HqXRAHS2F6k1cFxx93P516mzDU_Ep5ijK73rD8TujycnNARBzhd5c8Iay12bXg8C9RRXwLrw1a4lE5wsQwzONvQVQ0quJfsHX84aT283dhQCZF1loR7pg53SMS_XieNAiHAPput8_F6cEOjKJsDIaaS1uIn5tqGewafTe_XAbSIAPTLZfNz-s6c_ZC96cr7JU9VTtKYW3gIUouS6OZWY4IZ" alt="Ndop"/>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <span class="text-[10px] font-label-caps text-secondary mb-1 block font-semibold">Audio Documentaire</span>
+                                    <h5 class="text-body-md font-body-md font-bold text-on-background truncate">Le Tissage Ndop: Artisans</h5>
+                                    <div class="flex items-center gap-xs mt-1 text-on-surface-variant">
+                                        <span class="material-symbols-outlined text-[14px]">headphones</span>
+                                        <span class="text-[12px] font-label-caps">12:04 restants</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div onclick="openContentDetail('Symbolisme dans les Bronzes Bamoun', 'Analyse artistique et culturelle des créations royales de Foumban.', 'https://lh3.googleusercontent.com/aida-public/AB6AXuDmUIYgM-iYqHoiQlgWepgwr617984m2g7PA8S-mKR_jp-6Viqd4RHcxjHxj4pJpmy9XFedvQ54SBwKLzzhBRFVhYZmWZ4LwlF5JlixjJ1AyQMVoF3XwEne126LJba_8qm1AIbpQlO7nXNHOnZ_vernwrX1Onn_1Lw-_qeExQDX-NPrHbMo1J8cG8hrYyH6Brt4A_QwX9SwDbHchIJQ49jbiqohIb0I1QBFchYrKg-30b4aX4VG7tUu')" class="bg-surface-container-lowest p-sm rounded-xl card-shadow flex gap-sm items-center cursor-pointer hover:bg-surface-container transition-colors group">
+                                <div class="w-16 h-16 rounded-lg overflow-hidden shrink-0 relative">
+                                    <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmUIYgM-iYqHoiQlgWepgwr617984m2g7PA8S-mKR_jp-6Viqd4RHcxjHxj4pJpmy9XFedvQ54SBwKLzzhBRFVhYZmWZ4LwlF5JlixjJ1AyQMVoF3XwEne126LJba_8qm1AIbpQlO7nXNHOnZ_vernwrX1Onn_1Lw-_qeExQDX-NPrHbMo1J8cG8hrYyH6Brt4A_QwX9SwDbHchIJQ49jbiqohIb0I1QBFchYrKg-30b4aX4VG7tUu" alt="Bronze"/>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <span class="text-[10px] font-label-caps text-primary mb-1 block font-semibold">Article</span>
+                                    <h5 class="text-body-md font-body-md font-bold text-on-background truncate">Bronzes Bamoun</h5>
+                                    <div class="flex items-center gap-xs mt-1 text-on-surface-variant">
+                                        <span class="material-symbols-outlined text-[14px]">bookmark</span>
+                                        <span class="text-[12px] font-label-caps">Sauvegardé</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb-xl">
+                    <h3 class="text-headline-sm font-headline-sm text-on-background mb-md font-bold">Explorer par Format</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-sm md:gap-md">
+                        <div class="relative h-40 md:h-64 rounded-xl overflow-hidden group cursor-pointer card-shadow">
+                            <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcs7m_3Fq8YDmZID1qXgFPhjgDFj-DYbAPrkBalIDNlxF9f9RnooCjgK7VzeExspGNMrS5VEMfwebTgBm6G9_e2s5jv__oJ9M6VNXTR3sQV0pAVHgDeqWwEScWdkL0Xthoj1gv5wsVxZsje7p-nMkI6L6pTb3NmYLCyJPeg9-sIfNGWH9FMloaE9QIiHW49rJhQ2AmwXO06qfZazggsvJaxnbDGJqVi_rOxn2XoaHfPzXunEyTC_u1" alt="Books"/>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 p-sm md:p-md w-full">
+                                <span class="text-label-caps font-label-caps text-white/80 block mb-1">2,450+ Titres</span>
+                                <h4 class="text-headline-sm font-headline-sm text-white font-bold">Livres & Manuscrits</h4>
+                            </div>
+                        </div>
+                        <div class="relative h-40 md:h-64 rounded-xl overflow-hidden group cursor-pointer card-shadow">
+                            <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH51XlMvQ4O7OSggtsXmylidDVP9-iVRmMg-OsmfCjWNPOlPTcl6sYLW1frmyqrhEzKFcgf4T-1JXNe--BST49HZXOATWWFMPl9HNOjI1w10eI36aj9xpkp1vVk9NFrobn5q25Wy8WweXNqAkyLNWRbetyWSvQ6YAgUBO5vTzd0jCas1ZLl4iXanfQpshFbmzkMHOckmcXGgPmgBvteLguaVqz_feuhnlSO1o8qW82ZFcZtqkfQV2X" alt="Audio"/>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 p-sm md:p-md w-full">
+                                <span class="text-label-caps font-label-caps text-white/80 block mb-1">800+ Pistes</span>
+                                <h4 class="text-headline-sm font-headline-sm text-white font-bold">Archives Sonores</h4>
+                            </div>
+                        </div>
+                        <div class="relative h-40 md:h-64 rounded-xl overflow-hidden group cursor-pointer card-shadow">
+                            <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqEzTNTwWDbVHFv_AGPqIIz_m--LSnNWIHxs4rXWLWdYX3rxCSqAZDG3Puy3ER1Mw69F7WZsBKyjAKIIySfetnCNaUP7ajgefzsSwZ0K6ZpIZIrZmGulB7PG-a_PD3gpm_SmOXyvaxE0VAdB08QWvPj_nk80wHRnBct-2ai5qQDr2m5hwRrvxeESI0MuKdw4UdRvIt7Ym1KKmPXOyLOwbUwee2p87u7_WjtKTJZ6M-v5_ljOADyuTO" alt="Video"/>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 p-sm md:p-md w-full">
+                                <span class="text-label-caps font-label-caps text-white/80 block mb-1">450+ Vidéos</span>
+                                <h4 class="text-headline-sm font-headline-sm text-white font-bold">Documentaires</h4>
+                            </div>
+                        </div>
+                        <div class="relative h-40 md:h-64 rounded-xl overflow-hidden group cursor-pointer card-shadow">
+                            <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsM2xIZrWL-pfCzP6nMvuQZ0Tpo9r2YpyrEgsl9e6ErvqxmB_CXlhyD-Mp8rQ--7xAebnmRilG7baakeOMOKyHN3eXOA0b_EaqkbL8N7AX1WCqZpem3RDhOR1-fCtiFXjWbf0fPQhzI4NC2tbiByPZgmNuh6jV7fgir_-Y59wiO94dgJCBxUBlg8iwjbbhG_D-nKTr_tUKWEmDm8tALt9erRqAw1Y4HE-gvdbf-5hbfK4bSd0vKaGs" alt="Art"/>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 p-sm md:p-md w-full">
+                                <span class="text-label-caps font-label-caps text-white/80 block mb-1">1,200+ Œuvres</span>
+                                <h4 class="text-headline-sm font-headline-sm text-white font-bold">Arts Visuels</h4>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- 5. APPRENDRE VIEW (EXACT Stitch apprendre_desktop.html Source of Truth) -->
+        <div id="view-apprendre" class="page-view hidden">
+            <!-- Hero Banner -->
+            <section class="relative w-full h-64 lg:h-96 flex items-center justify-center overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-primary-container/80 to-tertiary-container/60 z-10"></div>
+                <img alt="Hero background" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQ3nrhXae6P4VngSgxS6uYsst6n8gcTMaPZKAtEiZbI7i-37XygmdfCvgrHAmE5CHC0vLlfIaewq_AolnwCaDLHXbzqwkv7JNu4o1xiowE081r_IHj1xZesEndp1YWYHy2WlD_s58WGnOLTigmAWynY_dU3Z19n5-jFtEL9NjAyGCCCWWz7nJPYQSJmyyhlPAaQAuDAWaLHckncK6GM74aFkhKXSxYQ2Ae0-pNjkkh4rR9eo-Fx5as"/>
+                <div class="relative z-20 text-center px-gutter">
+                    <h1 class="text-display-lg-mobile lg:text-display-lg font-display-lg text-on-primary font-bold mb-xs">Apprendre</h1>
+                    <p class="text-body-lg font-body-lg text-on-primary-container max-w-2xl mx-auto">Maîtrisez les arts traditionnels, explorez les histoires régionales et échangez avec des experts.</p>
+                </div>
+            </section>
+
+            <div class="max-w-container-max mx-auto w-full px-gutter lg:px-lg py-md lg:py-xl">
+                <!-- Bento Grid: Masterclass & Progression -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-md mb-xl">
+                    <!-- Featured Masterclass -->
+                    <div class="md:col-span-2 rounded-xl overflow-hidden card-shadow relative group bg-surface-container-lowest flex flex-col justify-end min-h-[300px]">
+                        <img alt="Textile weaving" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnUJz_Z-nPSn6vwwKlOKfv0C7WtTmNtDziPRd9SCzAEdv8x37UQ-xliE8waYIXv83N2Q5daNlWl0r5tOwu1KTkY1Qc4_K5SPl3N1kgy6ghOTXyRBAivFCrorcPORVYGrkOo57ZHbvNKAf_4NWR7aJ4JsBk5rBSIHObRoeoos3tbHwjO2Nt_HvRy5Q21libbtzLk3vaep5ZzlVf-3Kl4TuMl3zDU6dWbxR4y8EcFb6sFGT1_yiMNgBT"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-on-background/40 to-transparent"></div>
+                        <div class="relative z-10 p-md">
+                            <span class="inline-block px-xs py-base bg-secondary-fixed text-on-secondary-fixed text-label-caps font-label-caps rounded-full mb-sm font-semibold">Masterclass</span>
+                            <h3 class="text-headline-md font-headline-md text-on-primary mb-xs font-bold">L'Art du Textile Ndop</h3>
+                            <p class="text-body-md font-body-md text-surface-variant mb-sm">Explorez l'histoire, les symboles et les techniques du tissu sacré Bamileke.</p>
+                            <button onclick="alert('Module 3: Continuation')" class="bg-primary text-on-primary px-sm py-xs rounded-full text-label-caps font-label-caps font-bold shadow-sm hover:bg-primary-container transition-colors">Continuer le Module 3</button>
+                        </div>
+                    </div>
+
+                    <!-- Progress Stats -->
+                    <div class="bg-surface-container-lowest rounded-xl p-md card-shadow border border-surface-variant flex flex-col">
+                        <h3 class="text-headline-sm font-headline-sm text-primary mb-md font-bold">Ma Progression</h3>
+                        <div class="flex-grow flex flex-col gap-md justify-center">
+                            <div>
+                                <div class="flex justify-between text-label-caps font-label-caps text-on-surface-variant mb-base">
+                                    <span>Traditions Orales</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-label-caps font-label-caps text-on-surface-variant mb-base">
+                                    <span>Héritage Culinaire</span>
+                                    <span>45%</span>
+                                </div>
+                                <div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+                                    <div class="h-full bg-tertiary" style="width: 45%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-md pt-sm border-t border-surface-variant flex justify-between items-center">
+                            <span class="text-body-md font-body-md text-on-surface-variant">Certificats Obtenus</span>
+                            <span class="text-headline-sm font-headline-sm text-secondary font-bold">2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Catalog Grid -->
+                <section>
+                    <h2 class="text-headline-md font-headline-md text-on-background mb-md font-bold">Catalogue des Cours</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+                        <div class="bg-surface-container-lowest rounded-xl overflow-hidden card-shadow hover:shadow-md transition-shadow group cursor-pointer border border-surface-variant">
+                            <div class="h-40 relative overflow-hidden">
+                                <img alt="Architecture" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD1ZrEEPi7Us5Nd8DXoNKQDW2rZqBZYYKbbqbwnKbUh7MUfdLhayQLntsh_ge_6Tsru3rRuwat0FLsPUv9gCqEbXDJ-wa4_cN1DcDatLTs2w-2sDhTHW3Ku3BnMWyUpV5OvXDvCAv6Xj5sqmo8gwo_ZEJH5lgn8or8VAFRB5rIR_WAbdKrGRXmVCJfHh9I7hiI_uVSrdN-KJMfxvAj8hFda8jSsUsNtRTB3ZYQ90rzFHGSEqrdgk1Q"/>
+                            </div>
+                            <div class="p-sm">
+                                <span class="text-tertiary text-label-caps font-label-caps mb-base block font-bold">Architecture</span>
+                                <h4 class="text-body-lg font-headline-sm text-on-background font-bold mb-xs line-clamp-2">Techniques Saheliennes</h4>
+                                <div class="flex justify-between items-center border-t border-surface-variant pt-sm mt-auto">
+                                    <span class="text-primary font-bold">Gratuit</span>
+                                    <span class="material-symbols-outlined text-primary">arrow_forward</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-surface-container-lowest rounded-xl overflow-hidden card-shadow hover:shadow-md transition-shadow group cursor-pointer border border-surface-variant">
+                            <div class="h-40 relative overflow-hidden">
+                                <img alt="Music" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSN8Z0FvI2NDEIdfIKcvzTBDWZmnkifZdLQETz7TIZKRhP0sXRs1BGstv_pWlXTbHOdZ4BQj628mzPCw3XRVEVPKd9KqV2FkzMyIKpo5oVYIRUyGAa0ivYxBRPky2iZoOAujKbeFPLMKdN44kWK5XIvdEva6IgBLUtFvnqpsLPTS4RBhqCZQ9NBcmq7RKTxYCbhAakIh9eWlhY8kNTQcfocW0thz4Wxmwvyx7NSe2SuBqiOAmvUZv6"/>
+                            </div>
+                            <div class="p-sm">
+                                <span class="text-secondary text-label-caps font-label-caps mb-base block font-bold">Musique & Mvet</span>
+                                <h4 class="text-body-lg font-headline-sm text-on-background font-bold mb-xs line-clamp-2">Rythmes de la Forêt</h4>
+                                <div class="flex justify-between items-center border-t border-surface-variant pt-sm mt-auto">
+                                    <span class="text-primary font-bold">15 000 FCFA</span>
+                                    <span class="material-symbols-outlined text-primary">arrow_forward</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-surface-container-lowest rounded-xl overflow-hidden card-shadow hover:shadow-md transition-shadow group cursor-pointer border border-surface-variant">
+                            <div class="h-40 relative overflow-hidden">
+                                <img alt="Culinary" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsiB-_Fm0YBA1u9UbNdordAS2JeOx_3YV8jlnSRthRTTP016who9kxzvZI9MuxeKtngmMUjgIIOwu_vGjfG3PEuE3K33OT2wOPVyU-eL8aZ37GqrQiRveAnIS-DspgiHP_oQzrcLLO3AJhmAq9tS01xsHmHlp_NNe7xK_9LkP0YuBz-B1FnjfaI5MeExNLOCmZil3iFGlPueFhXNc_zh2KI2VrujZg5Ezxx2MKl1ePEUFuwyAT217g"/>
+                            </div>
+                            <div class="p-sm">
+                                <span class="text-tertiary-container text-label-caps font-label-caps mb-base block font-bold">Art Culinaire</span>
+                                <h4 class="text-body-lg font-headline-sm text-on-background font-bold mb-xs line-clamp-2">Épices & Conservation</h4>
+                                <div class="flex justify-between items-center border-t border-surface-variant pt-sm mt-auto">
+                                    <span class="text-primary font-bold">Gratuit</span>
+                                    <span class="material-symbols-outlined text-primary">arrow_forward</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- 6. COMMUNITY VIEW (Exact Stitch communaut_desktop.html Source of Truth & Fully Interactive) -->
+        <div id="view-community" class="page-view hidden">
+            <div class="max-w-container-max mx-auto px-gutter lg:px-lg py-md">
+                <header class="mb-md flex justify-between items-end">
+                    <div>
+                        <h1 class="text-2xl lg:text-3xl font-display-lg text-on-surface mb-1 font-bold">Communauté KULTURA</h1>
+                        <p class="text-sm text-on-surface-variant">Échangez, partagez vos créations et participez à la vie culturelle.</p>
+                    </div>
+                    <div class="hidden sm:flex gap-sm">
+                        <button onclick="document.getElementById('post-input').focus()" class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1 shadow-sm hover:bg-primary-container">
+                            <span class="material-symbols-outlined text-sm">edit</span> Créer une publication
+                        </button>
+                    </div>
+                </header>
+
+                <!-- Bento Grid Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-md">
+                    <!-- Main Feed (Center Column - 8 cols) -->
+                    <div class="lg:col-span-8 flex flex-col gap-md">
+                        <!-- Create Post Interactive Area -->
+                        <div class="bg-surface-container-lowest rounded-xl p-md card-shadow border border-surface-variant">
+                            <div class="flex gap-4 items-start">
+                                <img class="w-10 h-10 rounded-full object-cover shrink-0" alt="Justine Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwv9NhlD8dAo7asxhrVwLIOurgmZ8OEEEZkymRJYihqNkH6Eus_38TZJY8bDR6v7ftPzAwRzGOoODHu-l4BOQHc7eCAfstjQDvFfJIbW_ouEZg8tQumPL86lEdtYmPPZtLCsS9WEsXMzBD4a6zg0ZoIzG8NXRGyqVrL6DpRWnHTEEwvnReOONH8lKmjy4UBo7_Qd6jKRv8whl1T33Ts5DRjVBwUDQt2p6CTJ_bkqVtDzIz9mwuQqSl"/>
+                                <div class="flex-grow">
+                                    <input id="post-input" class="w-full bg-transparent border-b border-outline-variant pb-2 focus:outline-none focus:border-primary transition-colors text-body-md font-body-md placeholder:text-on-surface-variant" placeholder="Partagez un moment culturel, une idée ou un projet..." type="text"/>
+                                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mt-4">
+                                        <div class="flex flex-wrap gap-2 text-on-surface-variant">
+                                            <button onclick="alert('Module d\'ajout d\'image ouvert !')" class="hover:text-primary transition-colors flex items-center gap-1 text-[11px] font-bold"><span class="material-symbols-outlined text-[18px]">image</span> Média</button>
+                                            <button onclick="alert('Choix d\'événement ouvert !')" class="hover:text-primary transition-colors flex items-center gap-1 text-[11px] font-bold"><span class="material-symbols-outlined text-[18px]">event</span> Événement</button>
+                                            <button onclick="alert('Rédacteur d\'article ouvert !')" class="hover:text-primary transition-colors flex items-center gap-1 text-[11px] font-bold"><span class="material-symbols-outlined text-[18px]">article</span> Article</button>
+                                        </div>
+                                        <button onclick="publishPost()" class="w-full sm:w-auto bg-primary text-on-primary px-6 py-2 rounded-full text-xs font-bold hover:bg-primary-container transition-colors shadow-sm">Publier</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dynamic Feed Container -->
+                        <div id="community-feed" class="flex flex-col gap-md">
+                            <!-- Post 1: Event & Highlight -->
+                            <article class="bg-surface-container-lowest rounded-xl overflow-hidden card-shadow border border-surface-variant">
+                                <div class="relative h-64 w-full cursor-pointer" onclick="openContentDetail('Festival Ngondo 2026', 'Le rassemblement annuel du peuple Sawa réunit traditions maritimes et célébrations contemporaines.', 'https://lh3.googleusercontent.com/aida-public/AB6AXuArhlocEva7Kz1XWjfb9YXT779RDUfSvv5eyahEBUVOhK5AqlVhlAx_p9bRwL_1rNZyySNZqvfHQKZI2LnUmj_TqZ65n6QEJBSdZBjalylCT9cUVAedF1eUrCCBQnCKh75ynn-vBOCarY1rH33oNerFrMubXWJMuMyr2GbmcWAkhk67FH730cXvOdnu1GPlKqHudNuk8ejQm89dE2MLhBiQ-szqc2BczMzdJ1b1QDXWREzoisKMgI6F')">
+                                    <img class="absolute inset-0 w-full h-full object-cover" alt="Festival Ngondo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArhlocEva7Kz1XWjfb9YXT779RDUfSvv5eyahEBUVOhK5AqlVhlAx_p9bRwL_1rNZyySNZqvfHQKZI2LnUmj_TqZ65n6QEJBSdZBjalylCT9cUVAedF1eUrCCBQnCKh75ynn-vBOCarY1rH33oNerFrMubXWJMuMyr2GbmcWAkhk67FH730cXvOdnu1GPlKqHudNuk8ejQm89dE2MLhBiQ-szqc2BczMzdJ1b1QDXWREzoisKMgI6F"/>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    <div class="absolute top-4 left-4">
+                                        <span class="bg-secondary/30 text-white backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold border border-white/20">Douala Events</span>
+                                    </div>
+                                </div>
+                                <div class="p-md">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <div>
+                                            <h2 class="text-lg font-bold text-on-surface">Moments Forts du Festival Ngondo</h2>
+                                            <p class="text-xs text-on-surface-variant">Par <span class="text-primary font-bold">Conseil du Patrimoine Culturel</span> • Il y a 2h</p>
+                                        </div>
+                                        <button onclick="alert('Menu d\'options du post')" class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined">more_horiz</span></button>
+                                    </div>
+                                    <p class="text-sm text-on-surface mb-4">L'assemblée annuelle des peuples Sawa réunit tradition et célébration moderne sur les rives du fleuve Wouri. Découvrez les rituels et les courses de pirogues.</p>
+                                    <div class="flex justify-between items-center pt-3 border-t border-surface-variant text-on-surface-variant text-xs font-bold">
+                                        <div class="flex gap-6">
+                                            <button onclick="likePost(this)" class="flex items-center gap-1.5 hover:text-primary transition-colors"><span class="material-symbols-outlined text-base">favorite</span> <span class="like-count">2450</span></button>
+                                            <button onclick="toggleReplies('reply-section-1')" class="flex items-center gap-1.5 hover:text-primary transition-colors"><span class="material-symbols-outlined text-base">chat_bubble</span> <span class="reply-count">142</span> commentaires</button>
+                                            <button onclick="alert('Lien de partage copié !')" class="flex items-center gap-1.5 hover:text-primary transition-colors"><span class="material-symbols-outlined text-base">share</span> Partager</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Interactive Reply Section -->
+                                    <div id="reply-section-1" class="hidden mt-md pt-md border-t border-surface-variant space-y-sm">
+                                        <div class="flex gap-2">
+                                            <input id="reply-input-1" type="text" class="flex-1 bg-surface-container border border-outline-variant rounded-full px-4 py-1.5 text-xs outline-none focus:border-primary" placeholder="Écrire un commentaire..."/>
+                                            <button onclick="addReply(1)" class="bg-primary text-on-primary px-4 py-1.5 rounded-full text-xs font-bold">Envoyer</button>
+                                        </div>
+                                        <div id="replies-list-1" class="space-y-xs pt-xs">
+                                            <div class="bg-surface-container p-sm rounded-xl text-xs">
+                                                <span class="font-bold text-on-surface">Samuel K. :</span> Un événement magistral cette année ! La course de pirogues était palpitante.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Post 2: Artisan Discussion -->
+                            <article class="bg-surface-container-lowest rounded-xl p-md card-shadow border border-surface-variant">
+                                <div class="flex justify-between items-start mb-3">
+                                    <div class="flex gap-3 items-center">
+                                        <img class="w-10 h-10 rounded-full object-cover shrink-0" alt="Jean-Pierre Ndongo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6IMpnpRt_yySBAmQ3tExbg0sNfy4kPUd4rlzOHBOQvGcaf2hs_EHdqvqDNh8kX1Q5Lhlu66ym4X3f52L3gKPT2--X1GNcxHqueNkIlYF5FffYoFdEY4HUd9noKv1exoSAbFfrS_gzkQ8TyeCgMmj0QLUxHw8MdeQtP60-XskPSfTGZEvInhbwLwQzCcP-PaeqxllIHkGsO9AbeCt79cCuFlDOBk1IwEr2PtYcSa8PpAAw3p0ZkbD3"/>
+                                        <div>
+                                            <h3 class="font-bold text-sm text-on-surface">Jean-Pierre Ndongo</h3>
+                                            <p class="text-xs text-on-surface-variant">Maître Artisan • Groupe Patrimoine Bamileke</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h2 class="text-base font-bold text-on-surface mb-2">Préservation de l'Art du Tissage Ndop</h2>
+                                <p class="text-sm text-on-surface mb-4">Comment s'assurer que les techniques complexes de création des tissus Ndop soient transmises à la nouvelle génération ? J'anime un atelier la semaine prochaine à Bafoussam, mais nous avons besoin de plus de documentation numérique.</p>
+                                <div class="flex gap-2 mb-4">
+                                    <span class="bg-surface-container text-on-surface px-3 py-1 rounded-full text-xs font-bold">Art Traditionnel</span>
+                                    <span class="bg-surface-container text-on-surface px-3 py-1 rounded-full text-xs font-bold">Ateliers</span>
+                                </div>
+                                <div class="flex justify-between items-center pt-3 border-t border-surface-variant text-on-surface-variant text-xs font-bold">
+                                    <div class="flex gap-6">
+                                        <button onclick="likePost(this)" class="flex items-center gap-1.5 hover:text-primary transition-colors"><span class="material-symbols-outlined text-base">favorite</span> <span class="like-count">845</span></button>
+                                        <button onclick="toggleReplies('reply-section-2')" class="flex items-center gap-1.5 hover:text-primary transition-colors"><span class="material-symbols-outlined text-base">chat_bubble</span> <span class="reply-count">56</span> réponses</button>
+                                    </div>
+                                </div>
+
+                                <!-- Interactive Reply Section 2 -->
+                                <div id="reply-section-2" class="hidden mt-md pt-md border-t border-surface-variant space-y-sm">
+                                    <div class="flex gap-2">
+                                        <input id="reply-input-2" type="text" class="flex-1 bg-surface-container border border-outline-variant rounded-full px-4 py-1.5 text-xs outline-none focus:border-primary" placeholder="Répondre à Jean-Pierre..."/>
+                                        <button onclick="addReply(2)" class="bg-primary text-on-primary px-4 py-1.5 rounded-full text-xs font-bold">Envoyer</button>
+                                    </div>
+                                    <div id="replies-list-2" class="space-y-xs pt-xs">
+                                        <div class="bg-surface-container p-sm rounded-xl text-xs">
+                                            <span class="font-bold text-on-surface">Aminata M. :</span> Comptez sur moi pour numériser vos schémas lors de l'atelier !
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Right Sidebar (Trending & Groups - 4 cols) -->
+                    <aside class="lg:col-span-4 flex flex-col gap-md">
+                        <!-- Trending Topics -->
+                        <div class="bg-surface-container-lowest rounded-xl p-md card-shadow border border-surface-variant">
+                            <h3 class="text-base font-bold text-on-surface mb-3">Discussions Tendances</h3>
+                            <ul class="flex flex-col gap-3">
+                                <li onclick="alert('Discussion sur les Cases Musgum')" class="group cursor-pointer border-b border-surface-variant pb-2">
+                                    <p class="text-[10px] font-bold text-primary mb-0.5">Architecture • Tendance</p>
+                                    <h4 class="text-xs font-bold group-hover:text-primary transition-colors">Modernisation des Cases Obus Musgum</h4>
+                                    <p class="text-[11px] text-on-surface-variant mt-0.5">1 240 participants</p>
+                                </li>
+                                <li onclick="alert('Discussion sur le Ndolé')" class="group cursor-pointer border-b border-surface-variant pb-2">
+                                    <p class="text-[10px] font-bold text-secondary mb-0.5">Arts Culinaires • Tendance</p>
+                                    <h4 class="text-xs font-bold group-hover:text-primary transition-colors">L'Évolution de la Recette du Ndolé</h4>
+                                    <p class="text-[11px] text-on-surface-variant mt-0.5">850 participants</p>
+                                </li>
+                                <li onclick="alert('Discussion sur le Makossa')" class="group cursor-pointer">
+                                    <p class="text-[10px] font-bold text-tertiary mb-0.5">Musique • Tendance</p>
+                                    <h4 class="text-xs font-bold group-hover:text-primary transition-colors">Renaissance du Makossa 2026</h4>
+                                    <p class="text-[11px] text-on-surface-variant mt-0.5">3 400 participants</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Suggested Groups -->
+                        <div class="bg-surface-container-lowest rounded-xl p-md card-shadow border border-surface-variant">
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="text-base font-bold text-on-surface">Rejoindre un Club</h3>
+                                <button onclick="alert('Liste de tous les clubs')" class="text-primary text-xs font-bold hover:underline">Voir tout</button>
+                            </div>
+                            <ul class="flex flex-col gap-3">
+                                <li class="flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-lg bg-tertiary-container flex items-center justify-center text-on-tertiary-container shrink-0">
+                                            <span class="material-symbols-outlined text-sm">palette</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xs font-bold text-on-surface">Art Contemporain</h4>
+                                            <p class="text-[10px] text-on-surface-variant">12k Membres</p>
+                                        </div>
+                                    </div>
+                                    <button onclick="toggleJoin(this)" class="px-3 py-1 border border-outline-variant rounded-full text-xs font-bold hover:bg-primary hover:text-on-primary transition-colors">Rejoindre</button>
+                                </li>
+                                <li class="flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0">
+                                            <span class="material-symbols-outlined text-sm">restaurant</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xs font-bold text-on-surface">Patrimoine Culinaire</h4>
+                                            <p class="text-[10px] text-on-surface-variant">8.5k Membres</p>
+                                        </div>
+                                    </div>
+                                    <button onclick="toggleJoin(this)" class="px-3 py-1 border border-outline-variant rounded-full text-xs font-bold hover:bg-primary hover:text-on-primary transition-colors">Rejoindre</button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Community Crowdfunding Goal -->
+                        <div class="bg-surface-container-lowest rounded-xl p-md card-shadow border border-surface-variant">
+                            <h3 class="text-sm font-bold text-on-surface mb-1">Cagnotte : Restauration Palais Foumban</h3>
+                            <p class="text-xs text-on-surface-variant mb-3">Objectif de contribution communautaire du mois.</p>
+                            <div class="w-full h-2.5 bg-surface-variant rounded-full overflow-hidden mb-2">
+                                <div id="fund-bar" class="h-full bg-gradient-to-r from-primary to-secondary w-[65%] rounded-full transition-all duration-500"></div>
+                            </div>
+                            <div class="flex justify-between text-xs font-bold mb-3">
+                                <span id="fund-amount" class="text-secondary">650 000 FCFA</span>
+                                <span class="text-on-surface-variant">Objectif : 1 000 000 FCFA</span>
+                            </div>
+                            <button onclick="contributeFund()" class="w-full bg-primary text-on-primary py-2 rounded-full text-xs font-bold hover:bg-primary-container transition-colors shadow-sm">Contribuer (Pass Membre)</button>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. EVENTS VIEW -->
+        <div id="view-events" class="page-view hidden">
+            <div class="max-w-container-max mx-auto px-gutter lg:px-lg py-md">
+                <header class="mb-md">
+                    <h1 class="text-2xl lg:text-3xl font-display-lg text-on-surface mb-1 font-bold">Événements KULTURA</h1>
+                    <p class="text-sm text-on-surface-variant">Concerts, expositions, ateliers et festivals.</p>
+                </header>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                    <div class="bg-surface-container-lowest rounded-xl border border-surface-variant overflow-hidden card-shadow">
+                        <img class="w-full h-48 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYNEkaZPlTNk-xmFRXR-z5gWBfxlEXYzVgYp0VfGxXf54KiL-uujkbrOLFb9xJYkb4DcIwOJdbj8eaHQxdj8XfH15J-uesXhZc2KP8S666Hbc0ctqYUVUMcVteM7bAmxO7wI3tJRyQJU6rfIuGpf5ATzDmN-8aGK0m2OZ_HBdOCAF5d407RgNlS1q_GO9B6cmHqV4rtnxp08S_6U3S-qNdnZxIfx8A2SVNpuc9S9ofEfhAC7q3DsZC" alt="Event"/>
+                        <div class="p-md">
+                            <span class="text-xs font-bold text-primary">SAMEDI 28 AOÛT • DOUALA</span>
+                            <h3 class="text-lg font-bold text-on-surface mt-1">Nuit des Créateurs 2026</h3>
+                            <p class="text-xs text-on-surface-variant mt-1 mb-3">Rencontre avec les designers, modèles et créateurs contemporains.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-sm text-on-surface">5 000 FCFA <span class="text-xs text-primary">(Gratuit Membres Pass)</span></span>
+                                <button onclick="reserveEvent('Nuit des Créateurs')" class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-bold">Réserver</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. AGRI MICROFARM VIEW (EXACT Stitch agri_desktop.html Source of Truth) -->
+        <div id="view-agri" class="page-view hidden">
+            <!-- Hero Section -->
+            <section class="relative w-full h-[500px] lg:h-[600px] flex items-end pb-xl px-gutter lg:px-xl">
+                <div class="absolute inset-0 z-0">
+                    <img alt="Modern urban farming" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD57bvn6kZbYtmc8kWbLNDx_ulOMOs_LiEaXbVKb6RdFtlWqgPzztE45QbZpjr0pXOxY3--e2LVRSrD0Ihdigjymz-m9Z0uK6Gsc6OBeyQHL0YHhPPJUrAurtxAPocZLWCX1SMOLEGyo0ECqf8IvdizAb1TiRHGLsBNpY3lPPvwNb6fbAFZj6Rtvnl-b-pUSHJ_atCoRnqu5Rh3g8binTx6oBNAGHFAFj-m2es7BJQyqakpMwydb-x8"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-surface-container-highest via-surface/60 to-transparent"></div>
+                </div>
+                <div class="relative z-10 max-w-container-max w-full mx-auto">
+                    <span class="inline-block px-4 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed text-label-caps font-label-caps mb-4 shadow-sm border border-secondary-fixed-dim/30 backdrop-blur-md">KULTURA Agri</span>
+                    <h2 class="text-display-lg-mobile lg:text-display-lg font-display-lg-mobile lg:font-display-lg text-primary max-w-3xl mb-sm leading-tight font-bold">MICROFARM BOX:<br/>L'agriculture de demain, aujourd'hui.</h2>
+                    <p class="text-body-lg font-body-lg text-on-surface max-w-2xl mb-lg">Un hub d'innovation reliant les savoirs ancestraux à l'agriculture durable à haut rendement.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="alert('Exploration des projets MicroFarm')" class="bg-primary text-on-primary px-6 py-3 rounded-lg text-body-md font-body-md font-bold shadow-md hover:bg-primary-container transition-colors">Explorer les Projets</button>
+                        <button onclick="alert('Inscription au Hub Agri')" class="bg-surface/80 backdrop-blur-md border border-outline-variant text-primary px-6 py-3 rounded-lg text-body-md font-body-md font-bold hover:bg-surface transition-colors">Rejoindre le Hub</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bento Grid: Concept & Highlights -->
+            <section class="max-w-container-max mx-auto px-gutter lg:px-xl py-xl">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+                    <!-- Le Concept -->
+                    <div class="md:col-span-2 bg-surface-container rounded-xl p-lg relative overflow-hidden card-shadow">
+                        <div class="relative z-10 h-full flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-headline-md font-headline-md text-primary mb-sm font-bold">Le Concept</h3>
+                                <p class="text-body-md font-body-md text-on-surface-variant max-w-xl">La MicroFarm Box est plus qu'un jardin : c'est un laboratoire vivant. Nous fusionnons la sagesse agricole traditionnelle camerounaise avec des systèmes hydroponiques et mycologiques de pointe pour créer des écosystèmes alimentaires locaux et durables.</p>
+                            </div>
+                            <div class="mt-xl flex items-center gap-sm">
+                                <span class="material-symbols-outlined text-primary text-[32px]">eco</span>
+                                <span class="material-symbols-outlined text-secondary text-[32px]">science</span>
+                                <span class="material-symbols-outlined text-tertiary text-[32px]">groups</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Live Metrics -->
+                    <div class="bg-primary text-on-primary rounded-xl p-lg flex flex-col justify-between card-shadow">
+                        <div>
+                            <h4 class="text-label-caps font-label-caps text-primary-fixed-dim mb-xs uppercase">Hub Status</h4>
+                            <div class="text-display-lg-mobile font-display-lg-mobile mb-4 font-bold">Active</div>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="text-label-caps font-label-caps text-primary-fixed-dim">Projets Actifs</div>
+                                <div class="text-headline-sm font-headline-sm font-bold">12</div>
+                            </div>
+                            <div>
+                                <div class="text-label-caps font-label-caps text-primary-fixed-dim">Contributeurs Communauté</div>
+                                <div class="text-headline-sm font-headline-sm font-bold">340+</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Expérimentations en cours -->
+            <section class="max-w-container-max mx-auto px-gutter lg:px-xl py-xl border-t border-outline-variant/30">
+                <h3 class="text-headline-md font-headline-md text-primary mb-lg font-bold">Expérimentations en cours</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+                    <!-- Hydroponics Card -->
+                    <div class="group bg-surface rounded-xl overflow-hidden card-shadow hover:shadow-lg transition-shadow border border-surface-variant">
+                        <div class="h-48 relative overflow-hidden">
+                            <img alt="Hydroponics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsi71ijQuFRkiKqCJXMEHb3zB4VxRL1eu9suwmqBXEooRU3-Q-JLJXpNCYlPI9mT5ELx7vwM7FltvolylU6d4UFaFj-gumg2KYHr1qDPEQyrP2HfYjC9ZoPuaVO_4lgyed1ckH0COc4jUAZDosvnHCprxYzXKzvAyxf6ptfMCt76DYi__SQuEPBaU-iI7F8CnjaQViT-6S3ENNyhkaNq_TxIi3wmywzKL1eMUc1lCKQe8J_aMeubEb"/>
+                            <div class="absolute top-4 left-4">
+                                <span class="px-3 py-1 bg-surface/90 backdrop-blur-sm rounded-full text-label-caps font-label-caps text-primary shadow-sm font-semibold">Hydroponie</span>
+                            </div>
+                        </div>
+                        <div class="p-sm">
+                            <h4 class="text-headline-sm font-headline-sm text-on-surface mb-xs font-bold">Système Racines Libres</h4>
+                            <p class="text-body-md font-body-md text-on-surface-variant mb-4">Optimisation de l'apport en nutriments pour les légumes feuillus locaux en milieu urbain.</p>
+                            <div class="mt-4">
+                                <div class="flex justify-between text-label-caps font-label-caps text-on-surface-variant mb-1">
+                                    <span>Phase 2: Croissance</span>
+                                    <span>65%</span>
+                                </div>
+                                <div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-primary to-secondary w-[65%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mycology Card -->
+                    <div class="group bg-surface rounded-xl overflow-hidden card-shadow hover:shadow-lg transition-shadow border border-surface-variant">
+                        <div class="h-48 relative overflow-hidden">
+                            <img alt="Mycology" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMMMBa-mcbpDOqhxI1QBKN9VkHKjHZ_TrFbSaJLP5aPHqOoZ6hsqcLe8cdTXl4f_6lBQU-0dGSy5m8chsH-s2s0BPZfTwEkd3wXaP6emnPceqRTyjGz3K5CcySBpOBKbjnTOon_RlbNOvtgLcNx2IY8VMxl4IAdvmhENnnlkGU_iHssO9-HFXXhFgI3Y7dnxywbzR26FuXrDvjc3EfZDKvJi9mND9Rpm19CWVIbth3WMBWcgLTgo40"/>
+                            <div class="absolute top-4 left-4">
+                                <span class="px-3 py-1 bg-surface/90 backdrop-blur-sm rounded-full text-label-caps font-label-caps text-secondary shadow-sm font-semibold">Mycologie</span>
+                            </div>
+                        </div>
+                        <div class="p-sm">
+                            <h4 class="text-headline-sm font-headline-sm text-on-surface mb-xs font-bold">Culture sur Substrat Local</h4>
+                            <p class="text-body-md font-body-md text-on-surface-variant mb-4">Adaptation de variétés de champignons gastronomiques sur déchets agricoles réutilisés.</p>
+                            <div class="mt-4">
+                                <div class="flex justify-between text-label-caps font-label-caps text-on-surface-variant mb-1">
+                                    <span>Phase 3: Récolte</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-primary to-secondary w-[90%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Traditional Hybrid Card -->
+                    <div class="group bg-surface-container-high rounded-xl overflow-hidden card-shadow hover:shadow-lg transition-shadow border border-surface-variant flex flex-col justify-center items-center p-lg text-center relative">
+                        <span class="material-symbols-outlined text-primary text-[48px] mb-sm">lightbulb</span>
+                        <h4 class="text-headline-sm font-headline-sm text-on-surface mb-xs font-bold">Proposer un Projet</h4>
+                        <p class="text-body-md font-body-md text-on-surface-variant mb-4">Vous avez une idée combinant patrimoine culturel et agritech ?</p>
+                        <button onclick="alert('Formulaire de soumission de projet Agri')" class="mt-auto px-4 py-2 border-2 border-primary text-primary rounded-lg font-label-caps text-label-caps hover:bg-primary hover:text-on-primary transition-colors font-bold">Soumettre</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 9. SERVICES VIEW (EXACT Stitch services_desktop.html Source of Truth) -->
+        <div id="view-services" class="page-view hidden">
+            <!-- Hero Banner -->
+            <div class="relative w-full h-[360px] min-h-[300px] flex items-end px-gutter py-md lg:p-xl overflow-hidden bg-surface-container-low">
+                <div class="absolute inset-0 z-0">
+                    <div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent z-10"></div>
+                    <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS4qRAB3c02nxoYLX-yUeDyHCMSAp_y9dkrY2uMzw-_MngfYa1n7YHqOIcCjsPKRjoz0eN-Saa9130brrVYxfluMALQKzBsiu5t5fGPfX3et6gyLbrWICWCaEcoaYH4D6PrF3nC6HtytbA9X7ry-_wywQF-N224zSt-HqZgKtPjWPPQreydUjM1GNMEE97Hc6ozANGKw30h6FAGRaYq1mF-EO3WSTVoM-qriDpO7i7hB9UbltJe2wS" alt="Services Desk"/>
+                </div>
+                <div class="relative z-20 max-w-3xl">
+                    <span class="inline-block px-3 py-1 rounded-full bg-secondary-fixed/50 text-secondary text-label-caps font-label-caps mb-4 backdrop-blur-sm border border-secondary-fixed-dim/30">Directory Curaté</span>
+                    <h1 class="text-headline-md font-display-lg lg:text-4xl text-on-background mb-2 font-bold">Talents d'Exception.<br/>Ancrés dans l'Excellence.</h1>
+                    <p class="text-body-md font-body-md text-on-surface-variant max-w-xl">Connectez-vous avec notre réseau d'experts créatifs et professionnels évalués.</p>
+                </div>
+            </div>
+
+            <div class="max-w-container-max mx-auto px-gutter lg:px-xl py-lg">
+                <!-- Bento Services Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Featured Talent Card -->
+                    <div class="group md:col-span-2 bg-surface rounded-2xl overflow-hidden card-shadow border border-outline-variant/20 flex flex-col relative min-h-[420px]">
+                        <div class="absolute top-4 right-4 z-20 flex gap-2">
+                            <span class="px-3 py-1 bg-surface/90 backdrop-blur-md text-primary text-label-caps font-label-caps rounded-full shadow-sm flex items-center gap-1 font-bold"><span class="material-symbols-outlined text-[14px]">star</span> 4.9</span>
+                        </div>
+                        <div class="h-64 w-full relative overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwjrIZWJamqcN621ExxCTO_0p7BxzOlKv2r0L3UDzs59BG1d30gJzLv3Fa6ZatbSB-KMKKQlTsCs4gUY-MkR2_tjJgwY8z1O5j-_yefpdzaTAbShgDp1bBLrlmnOjUDjauGsDH-jyRoY-4ICrK5-eel5eDCs7HJuMe3VgNw2jC6JLDw74xu9irNFyVcLOesAZyVbsTeqZyy0wG0NMHeWVLFb26rc2AbGGbZzImdUgNvOb-YtYjoVmI" alt="Amara Ndiaye"/>
+                            <div class="absolute bottom-4 left-6 z-20">
+                                <span class="px-3 py-1 bg-secondary-fixed/90 text-secondary text-[10px] uppercase font-bold tracking-wider rounded-full mb-2 inline-block">Création / Photographie</span>
+                                <h3 class="text-headline-sm font-headline-sm text-white font-bold">Amara Ndiaye</h3>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between bg-surface">
+                            <div>
+                                <h4 class="text-body-lg font-body-lg font-semibold text-on-background mb-2">Photographie Éditoriale & Documentaire</h4>
+                                <p class="text-body-md font-body-md text-on-surface-variant">Spécialisée dans la captation du patrimoine culturel et des récits modernes.</p>
+                            </div>
+                            <div class="flex items-center justify-between mt-4 pt-4 border-t border-outline-variant/30">
+                                <div>
+                                    <p class="text-[10px] text-outline uppercase tracking-wider mb-1">Tarif Membre</p>
+                                    <p class="text-headline-sm font-headline-sm text-secondary font-bold">75 000 <span class="text-body-md text-on-surface-variant font-normal">FCFA / hr</span></p>
+                                </div>
+                                <button onclick="alert('Réservation avec Amara Ndiaye')" class="px-6 py-2.5 bg-primary text-on-primary transition-colors rounded-lg font-body-md font-bold text-sm">Réserver</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Talent Card 2 -->
+                    <div class="group bg-surface rounded-2xl overflow-hidden card-shadow border border-outline-variant/20 flex flex-col min-h-[420px]">
+                        <div class="h-48 w-full relative overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUbX9mmRaFv44x0MJ9_bwVto8teclDkGGmvxotoaoAtsPqvMnKH7Y2p5OZF4JLvJVyQRaepU1OVsoRnlPuLjbiYfKN2XAPWmCyKCtcMpyaNNnX4qq3U1AaN6AweIa5sbDoaEvTyHOG4oxvncYOr4QGzfuInW8ubOs-o4f66Fp4qH3kfTaPm5th5NJw1qGo3LlNSv-cxoEqPSqGCATzs9EuiiizhUWsa3fCQUcN7xeoi3481PIkjOpV" alt="Elias Kouassi"/>
+                        </div>
+                        <div class="p-5 flex-1 flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] text-secondary font-bold uppercase tracking-wider mb-1 block">Digital / UI Design</span>
+                                <h3 class="text-body-lg font-headline-sm font-bold text-on-background mb-1">Elias Kouassi</h3>
+                                <p class="text-body-md font-body-md text-on-surface-variant text-sm mb-3">Identité de Marque & Plateformes Digitales</p>
+                            </div>
+                            <div class="flex items-center justify-between pt-3 border-t border-outline-variant/30">
+                                <p class="text-body-lg font-bold text-secondary">45 000 <span class="text-xs text-on-surface-variant font-normal">FCFA</span></p>
+                                <button onclick="alert('Réservation avec Elias Kouassi')" class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors"><span class="material-symbols-outlined text-[18px]">arrow_forward</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 10. RELAIS KULTURA VIEW -->
+        <div id="view-relais" class="page-view hidden">
+            <div class="max-w-container-max mx-auto px-gutter lg:px-lg py-md">
+                <header class="mb-md">
+                    <h1 class="text-2xl lg:text-3xl font-display-lg text-on-surface mb-1 font-bold">Relais KULTURA</h1>
+                    <p class="text-sm text-on-surface-variant">Lieux physiques d'échange, de lecture et d'expériences culturelles.</p>
+                </header>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                    <div class="bg-surface-container-lowest p-md rounded-xl border border-surface-variant card-shadow">
+                        <div class="flex items-center gap-2 text-primary font-bold text-xs uppercase mb-1">
+                            <span class="material-symbols-outlined text-sm">location_on</span> RELAIS YAOUNDÉ CENTRE
+                        </div>
+                        <h3 class="text-lg font-bold text-on-surface">Espace Culturel KULTURA Bastos</h3>
+                        <p class="text-xs text-on-surface-variant mt-1 mb-3">Bibliothèque, coworking créatif, ateliers & dégustation de produits MicroFarm.</p>
+                        <div class="text-xs font-bold text-on-surface mb-3">Ouvert du Mardi au Samedi: 09h00 - 19h00</div>
+                        <button onclick="alert('Itinéraire vers le Relais Bastos')" class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-bold">Voir sur la carte</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 11. CARTE DE MEMBRE VIEW (EXACT Stitch carte_de_membre_desktop.html Source of Truth) -->
+        <div id="view-carte_membre" class="page-view hidden">
+            <div class="max-w-container-max mx-auto px-gutter md:px-lg py-md md:py-xl">
+                <div class="mb-lg flex flex-col md:flex-row md:items-end justify-between gap-4">
+                    <div>
+                        <h2 class="text-headline-md md:text-display-lg font-headline-md md:font-display-lg text-on-background mb-2 font-bold">Member Dashboard</h2>
+                        <p class="text-body-md font-body-md text-on-surface-variant">Bienvenue Justine. Voici votre passeport culturel.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+                    <!-- Left Column: Member Card & Benefits -->
+                    <div class="xl:col-span-8 space-y-xl">
+                        <!-- Digital Member Card -->
+                        <section>
+                            <div class="digital-card-bg rounded-2xl p-6 md:p-8 text-on-primary deep-shadow relative overflow-hidden group">
+                                <div class="relative z-10 flex flex-col h-full justify-between gap-8 md:gap-12">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h3 class="text-headline-sm font-headline-sm opacity-90 mb-1 tracking-wider font-bold">KULTURA MEMBER</h3>
+                                            <p class="text-label-caps font-label-caps opacity-70">ID: KLT-8472-X9</p>
+                                        </div>
+                                        <img alt="Kultura Emblem" class="w-12 h-12 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc0N94kOKV-W6eVFKTDM1mbRcxLeAQr_3ykUaZCss5azaL2y6yvfls_ZnWva2JjDJBeO3GBh2xQKiNQjJtaD81uSV4445ibGJ52GYmh2djvQv6D-x0htwmAxlM-XfFnK4QionV2Ab4psis40lPferWuL8OjLXJoh0l1R8fgZgRvBw-6DUUAHsshh2Y_dpL7iV0O6akMPkwgoRx63zDWF-HlZInMoQ3VpE83TQwtT9rtTJj6UEY5t0Z"/>
+                                    </div>
+                                    <div class="flex flex-col md:flex-row justify-between items-end gap-6">
+                                        <div>
+                                            <p class="text-label-caps font-label-caps opacity-70 mb-1">Détenteur du Pass</p>
+                                            <p class="text-display-lg font-display-lg leading-none mb-2 font-bold">Justine M.</p>
+                                            <div class="inline-flex items-center px-3 py-1 bg-surface-container-lowest/20 rounded-full backdrop-blur-sm border border-white/20">
+                                                <span class="material-symbols-outlined text-[16px] mr-1">explore</span>
+                                                <span class="text-label-caps font-label-caps font-bold">Level 4 — Explorer</span>
+                                            </div>
+                                        </div>
+                                        <div class="bg-surface-container-lowest p-2 rounded-xl shrink-0">
+                                            <img alt="Member QR Code" class="w-24 h-24 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJx5fzMFP70x4LOgIUBWK46QTWCjmlDmS1ayk0N3ya-74CkJRYldTfswLbZZ5SQ_H7SZ2TyVX4vUB1Mr6VSPd1bEzuFivRtRzJZzTCPjUgYDvCHdhJYBJXuO8FyUoZJiOvWQWWXOfrFfRkw7yS3BIKkw9B2KEaoOTH7w_q-GWo7GgY144zSwCmrLujamQzV0z8_0VhOgjW1Bf_veA_xP-LEQuGemcSrfMv7pTIFSphymKApA1CK4vY"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Benefits Grid -->
+                        <section>
+                            <h3 class="text-headline-sm font-headline-sm text-on-background mb-sm font-bold">Mes Avantages Exclusifs</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                                <div class="bg-surface-container-lowest rounded-xl p-sm card-shadow flex flex-col group border border-outline-variant/30">
+                                    <div class="w-full h-40 rounded-lg bg-surface-variant mb-4 overflow-hidden relative">
+                                        <img alt="Professional Portrait" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCK6RGh27hy4S-AOuZxMmfwqOQoWV8QEEesFR3AhZXhigPqTpW1E37PM0bG6j7-Y-39ztCoX3fQVCi_rbQIjn-KbdjgmE68T8gkEr6hLrhdqbCWHqDEbp50kcujZSJ2XNE3_AmIEyWmvd_eqIA63ya2Sqw2NVOSnIFakdiFO7wLcMO8dgfZ8PYDoVf_k-gzCT17gItzXJkuVSDYtzID59cbo25OQYZdbY7Vu0z-RepZ6oa3KXqd3ijj"/>
+                                    </div>
+                                    <h4 class="text-body-lg font-headline-sm text-on-background mb-2 font-bold leading-tight">Portrait Professionnel Studio</h4>
+                                    <p class="text-body-md font-body-md text-on-surface-variant mb-4 flex-1">Séance photo studio premium pour votre profil culturel et professionnel.</p>
+                                    <div class="flex items-center justify-between pt-3 border-t border-outline-variant/30 mt-auto">
+                                        <span class="text-body-md font-body-md text-secondary font-bold">15k FCFA <span class="line-through text-xs text-on-surface-variant font-normal">25k FCFA</span></span>
+                                        <button onclick="alert('Pass scanné ! Offre débloquée.')" class="p-2 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-on-primary transition-colors"><span class="material-symbols-outlined">confirmation_number</span></button>
+                                    </div>
+                                </div>
+
+                                <div class="bg-surface-container-lowest rounded-xl p-sm card-shadow flex flex-col group border border-outline-variant/30">
+                                    <div class="w-full h-40 rounded-lg bg-surface-variant mb-4 overflow-hidden relative">
+                                        <img alt="Festival" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_UJl8z1U-9s3axp5DkLlFSvhCqexzxqwsgqjmmfhe0H3Hxy3Miz8vEEXpZlSIjOSPNwMG5JpQ5WMnyd2pccouNI4q_wd-kHrHmpvJeZ6UhNawnToyhF2K3X8rGNgVxZURV5KUUHLQEbHDx-h1Oyk7cUuHgDsL_Wdt1-yrawNHq7j0VRw-OUAXGvVHFIs7FLQhZMuHnUi8MBLgJQfovU-2WRK6QYOpVwMAwPS1_ItjRL2OrbkDObht"/>
+                                    </div>
+                                    <h4 class="text-body-lg font-headline-sm text-on-background mb-2 font-bold leading-tight">Accès VIP Festival des Masques</h4>
+                                    <p class="text-body-md font-body-md text-on-surface-variant mb-4 flex-1">Réservez vos places 48h avant l'ouverture de la billetterie publique.</p>
+                                    <div class="flex items-center justify-between pt-3 border-t border-outline-variant/30 mt-auto">
+                                        <span class="text-label-caps font-label-caps text-primary font-bold">Pass Prioritaire</span>
+                                        <button onclick="alert('Réservation VIP')" class="p-2 rounded-full bg-primary text-on-primary"><span class="material-symbols-outlined">event_seat</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- Right Column: Mon Parcours Sidebar -->
+                    <div class="xl:col-span-4 space-y-md">
+                        <div class="bg-surface-container-lowest rounded-2xl p-sm md:p-6 card-shadow border border-outline-variant/20 sticky top-md">
+                            <h3 class="text-headline-sm font-headline-sm text-on-background mb-md border-b border-outline-variant/30 pb-2 font-bold">Mon Parcours</h3>
+                            <div class="space-y-4 mb-xl">
+                                <div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low">
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-primary">storefront</span>
+                                        <span class="text-body-md font-bold text-on-background">Relais visités</span>
+                                    </div>
+                                    <span class="text-headline-sm font-bold text-primary">7</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low">
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-secondary">auto_stories</span>
+                                        <span class="text-body-md font-bold text-on-background">Livres empruntés</span>
+                                    </div>
+                                    <span class="text-headline-sm font-bold text-secondary">12</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low">
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-tertiary">festival</span>
+                                        <span class="text-body-md font-bold text-on-background">Événements</span>
+                                    </div>
+                                    <span class="text-headline-sm font-bold text-tertiary">4</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <nav class="lg:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-2 py-2 bg-surface/95 backdrop-blur-xl shadow-lg z-50 border-t border-outline-variant/30">
+        <button onclick="navigateTo('home')" class="mobile-nav-btn flex flex-col items-center justify-center text-on-surface-variant" data-page="home">
+            <span class="material-symbols-outlined">home</span>
+            <span class="text-[10px] font-bold mt-0.5">Home</span>
+        </button>
+        <button onclick="navigateTo('explore')" class="mobile-nav-btn flex flex-col items-center justify-center text-on-surface-variant" data-page="explore">
+            <span class="material-symbols-outlined">explore</span>
+            <span class="text-[10px] font-bold mt-0.5">Explore</span>
+        </button>
+        <button onclick="navigateTo('community')" class="mobile-nav-btn flex flex-col items-center justify-center text-on-surface-variant" data-page="community">
+            <span class="material-symbols-outlined">group</span>
+            <span class="text-[10px] font-bold mt-0.5">Community</span>
+        </button>
+        <button onclick="navigateTo('events')" class="mobile-nav-btn flex flex-col items-center justify-center text-on-surface-variant" data-page="events">
+            <span class="material-symbols-outlined">calendar_month</span>
+            <span class="text-[10px] font-bold mt-0.5">Events</span>
+        </button>
+        <button onclick="navigateTo('carte_membre')" class="mobile-nav-btn flex flex-col items-center justify-center text-on-surface-variant" data-page="carte_membre">
+            <span class="material-symbols-outlined">badge</span>
+            <span class="text-[10px] font-bold mt-0.5">Pass</span>
+        </button>
+    </nav>
+
+    <!-- INTERACTIVE SEARCH MODAL -->
+    <div id="search-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-start justify-center pt-20 px-4">
+        <div class="bg-surface-container-lowest w-full max-w-xl rounded-2xl p-md shadow-2xl border border-outline-variant">
+            <div class="flex justify-between items-center mb-md">
+                <h3 class="font-bold text-on-surface">Recherche Globale KULTURA</h3>
+                <button onclick="closeSearchModal()" class="material-symbols-outlined text-on-surface-variant">close</button>
+            </div>
+            <input type="text" onkeyup="performSearch(this.value)" class="w-full bg-surface-container border border-outline-variant rounded-xl p-3 text-sm outline-none focus:border-primary" placeholder="Tapez un mot clé (ex: livre, cours, événement, relais)..." autofocus/>
+            <div id="search-results" class="mt-md space-y-sm max-h-64 overflow-y-auto">
+                <p class="text-xs text-on-surface-variant text-center py-4">Commencez à taper pour rechercher dans tout l'écosystème...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE NOTIFICATIONS MODAL -->
+    <div id="notification-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-start justify-center pt-20 px-4">
+        <div class="bg-surface-container-lowest w-full max-w-md rounded-2xl p-md shadow-2xl border border-outline-variant">
+            <div class="flex justify-between items-center mb-md">
+                <h3 class="font-bold text-on-surface">Centre de Notifications</h3>
+                <button onclick="closeNotificationCenter()" class="material-symbols-outlined text-on-surface-variant">close</button>
+            </div>
+            <div class="space-y-sm">
+                <div class="p-sm bg-surface-container rounded-xl flex gap-3">
+                    <span class="material-symbols-outlined text-primary">event</span>
+                    <div>
+                        <h4 class="text-xs font-bold text-on-surface">Rappel Événement</h4>
+                        <p class="text-xs text-on-surface-variant">Nuit des Créateurs dans 3 jours à Douala.</p>
+                    </div>
+                </div>
+                <div class="p-sm bg-surface-container rounded-xl flex gap-3">
+                    <span class="material-symbols-outlined text-secondary">school</span>
+                    <div>
+                        <h4 class="text-xs font-bold text-on-surface">Nouveau Module</h4>
+                        <p class="text-xs text-on-surface-variant">Le cours de Branding Créatif a été mis à jour.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENT DETAIL MODAL -->
+    <div id="detail-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-surface-container-lowest w-full max-w-lg rounded-2xl p-md shadow-2xl border border-outline-variant max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-md">
+                <h3 id="detail-title" class="font-bold text-on-surface text-lg">Titre du contenu</h3>
+                <button onclick="closeContentDetail()" class="material-symbols-outlined text-on-surface-variant">close</button>
+            </div>
+            <img id="detail-img" class="w-full h-48 object-cover rounded-xl mb-md" src="" alt="Detail"/>
+            <p id="detail-desc" class="text-sm text-on-surface-variant mb-md">Description détaillée...</p>
+            <div class="flex gap-sm">
+                <button onclick="alert('Ajouté à votre bibliothèque !')" class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-bold flex-1">Ajouter à mes favoris</button>
+                <button onclick="closeContentDetail()" class="border border-outline-variant px-4 py-2 rounded-full text-xs font-bold">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROTOTYPE JS ENGINE -->
+    <script>
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page-view').forEach(el => el.classList.add('hidden'));
+            const target = document.getElementById('view-' + pageId);
+            if (target) {
+                target.classList.remove('hidden');
+                window.scrollTo(0, 0);
+            }
+
+            // Update active state in desktop sidebar navigation
+            document.querySelectorAll('.nav-item').forEach(el => {
+                if (el.getAttribute('data-page') === pageId) {
+                    el.classList.add('bg-surface-container-highest', 'text-primary', 'font-bold', 'border-r-4', 'border-primary');
+                    const icon = el.querySelector('.material-symbols-outlined');
+                    if (icon) icon.classList.add('filled');
+                } else {
+                    el.classList.remove('bg-surface-container-highest', 'text-primary', 'font-bold', 'border-r-4', 'border-primary');
+                    const icon = el.querySelector('.material-symbols-outlined');
+                    if (icon) icon.classList.remove('filled');
+                }
+            });
+
+            // Update active state in mobile bottom bar
+            document.querySelectorAll('.mobile-nav-btn').forEach(el => {
+                const icon = el.querySelector('.material-symbols-outlined');
+                if (el.getAttribute('data-page') === pageId) {
+                    el.className = "mobile-nav-btn flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim bg-primary-fixed dark:bg-on-primary-fixed-variant rounded-full px-3 py-1 scale-105 duration-200 transition-all";
+                    if (icon) icon.classList.add('filled');
+                } else {
+                    el.className = "mobile-nav-btn flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary transition-all px-2 py-1";
+                    if (icon) icon.classList.remove('filled');
+                }
+            });
+        }
+
+        function openSearchModal() {
+            document.getElementById('search-modal').classList.remove('hidden');
+        }
+
+        function closeSearchModal() {
+            document.getElementById('search-modal').classList.add('hidden');
+        }
+
+        function openNotificationCenter() {
+            document.getElementById('notification-modal').classList.remove('hidden');
+        }
+
+        function closeNotificationCenter() {
+            document.getElementById('notification-modal').classList.add('hidden');
+        }
+
+        function openContentDetail(title, desc, imgSrc) {
+            document.getElementById('detail-title').innerText = title;
+            document.getElementById('detail-desc').innerText = desc;
+            document.getElementById('detail-img').src = imgSrc;
+            document.getElementById('detail-modal').classList.remove('hidden');
+        }
+
+        function closeContentDetail() {
+            document.getElementById('detail-modal').classList.add('hidden');
+        }
+
+        function likePost(btn) {
+            const countEl = btn.querySelector('.like-count');
+            const icon = btn.querySelector('.material-symbols-outlined');
+            let count = parseInt(countEl.innerText.replace(/\s/g, ''));
+            if (btn.classList.contains('text-primary')) {
+                btn.classList.remove('text-primary');
+                if (icon) icon.classList.remove('filled');
+                countEl.innerText = (count - 1).toLocaleString('fr-FR');
+            } else {
+                btn.classList.add('text-primary');
+                if (icon) icon.classList.add('filled');
+                countEl.innerText = (count + 1).toLocaleString('fr-FR');
+            }
+        }
+
+        function toggleReplies(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) section.classList.toggle('hidden');
+        }
+
+        function addReply(postId) {
+            const input = document.getElementById(`reply-input-${postId}`);
+            const repliesList = document.getElementById(`replies-list-${postId}`);
+            if (input && input.value.trim()) {
+                const text = input.value.trim();
+                const newReply = document.createElement('div');
+                newReply.className = 'bg-surface-container p-sm rounded-xl text-xs animate-fade-in';
+                newReply.innerHTML = `<span class="font-bold text-primary">Vous (Justine O.) :</span> ${text}`;
+                repliesList.appendChild(newReply);
+                input.value = '';
+            }
+        }
+
+        function publishPost() {
+            const input = document.getElementById('post-input');
+            const feed = document.getElementById('community-feed');
+            if (input && input.value.trim() && feed) {
+                const text = input.value.trim();
+                const newPost = document.createElement('article');
+                newPost.className = 'bg-surface-container-lowest rounded-xl p-md card-shadow border border-surface-variant animate-fade-in';
+                newPost.innerHTML = `
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex gap-3 items-center">
+                            <img class="w-10 h-10 rounded-full object-cover shrink-0" alt="Justine Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwv9NhlD8dAo7asxhrVwLIOurgmZ8OEEEZkymRJYihqNkH6Eus_38TZJY8bDR6v7ftPzAwRzGOoODHu-l4BOQHc7eCAfstjQDvFfJIbW_ouEZg8tQumPL86lEdtYmPPZtLCsS9WEsXMzBD4a6zg0ZoIzG8NXRGyqVrL6DpRWnHTEEwvnReOONH8lKmjy4UBo7_Qd6jKRv8whl1T33Ts5DRjVBwUDQt2p6CTJ_bkqVtDzIz9mwuQqSl"/>
+                            <div>
+                                <h3 class="font-bold text-sm text-on-surface">Justine Ornella</h3>
+                                <p class="text-xs text-on-surface-variant">Membre Ambassadeur • À l'instant</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-on-surface mb-4">${text}</p>
+                    <div class="flex justify-between items-center pt-3 border-t border-surface-variant text-on-surface-variant text-xs font-bold">
+                        <div class="flex gap-6">
+                            <button onclick="likePost(this)" class="flex items-center gap-1.5 hover:text-primary transition-colors"><span class="material-symbols-outlined text-base">favorite</span> <span class="like-count">1</span></button>
+                            <button onclick="toggleReplies('reply-section-new')" class="flex items-center gap-1.5 hover:text-primary transition-colors"><span class="material-symbols-outlined text-base">chat_bubble</span> <span class="reply-count">0</span> commentaires</button>
+                            <button onclick="alert('Lien de partage copié !')" class="flex items-center gap-1.5 hover:text-primary transition-colors"><span class="material-symbols-outlined text-base">share</span> Partager</button>
+                        </div>
+                    </div>
+                `;
+                feed.prepend(newPost);
+                input.value = '';
+            }
+        }
+
+        function toggleJoin(btn) {
+            if (btn.innerText === 'Rejoindre') {
+                btn.innerText = 'Rejoint';
+                btn.className = 'px-3 py-1 bg-primary text-on-primary rounded-full text-xs font-bold transition-colors';
+            } else {
+                btn.innerText = 'Rejoindre';
+                btn.className = 'px-3 py-1 border border-outline-variant rounded-full text-xs font-bold hover:bg-primary hover:text-on-primary transition-colors';
+            }
+        }
+
+        function contributeFund() {
+            const bar = document.getElementById('fund-bar');
+            const amountEl = document.getElementById('fund-amount');
+            if (bar && amountEl) {
+                bar.style.width = '75%';
+                amountEl.innerText = '750 000 FCFA';
+                alert('Merci pour votre contribution de 100 000 FCFA à la cagnotte du Palais Foumban !');
+            }
+        }
+
+        function reserveEvent(eventName) {
+            alert('Réservation confirmée pour: ' + eventName + ' ! Le pass et le ticket ont été ajoutés à votre compte.');
+        }
+
+        function performSearch(query) {
+            const container = document.getElementById('search-results');
+            if (!query.trim()) {
+                container.innerHTML = '<p class="text-xs text-on-surface-variant text-center py-4">Commencez à taper pour rechercher...</p>';
+                return;
+            }
+            container.innerHTML = `
+                <div onclick="navigateTo('mediatheque'); closeSearchModal();" class="p-sm hover:bg-surface-container rounded-lg cursor-pointer">
+                    <span class="text-xs font-bold text-secondary">LIVRE</span>
+                    <h4 class="text-sm font-bold text-on-surface">L'Enfant Noir - Camara Laye</h4>
+                </div>
+                <div onclick="navigateTo('events'); closeSearchModal();" class="p-sm hover:bg-surface-container rounded-lg cursor-pointer">
+                    <span class="text-xs font-bold text-primary">ÉVÉNEMENT</span>
+                    <h4 class="text-sm font-bold text-on-surface">Nuit des Créateurs 2026 - Douala</h4>
+                </div>
+                <div onclick="navigateTo('agri'); closeSearchModal();" class="p-sm hover:bg-surface-container rounded-lg cursor-pointer">
+                    <span class="text-xs font-bold text-tertiary">MICROFARM</span>
+                    <h4 class="text-sm font-bold text-on-surface">Box Agricole Connectée KULTURA</h4>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
